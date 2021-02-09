@@ -25,6 +25,7 @@ public class EStoreUI extends javax.swing.JFrame {
      * Creates new form EStoreUI
      */
     StoreManager ob;
+    ArrayList<String> lst = new ArrayList<String>();//list of sorted items
     public EStoreUI() {
         ob = new StoreManager();
         ob.init();
@@ -187,6 +188,11 @@ public class EStoreUI extends javax.swing.JFrame {
 
         buyB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buyB.setText("BUY");
+        buyB.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buyBMouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -289,7 +295,8 @@ public class EStoreUI extends javax.swing.JFrame {
                 tb1Model.removeRow(i);
             }
             int ch = itemTypecb.getSelectedIndex();
-            ArrayList<String> lst = ob.getList(tx, ch);
+            lst.clear();
+            lst = ob.getList(tx, ch);
             for(String i:lst){
                 System.out.println(i.split(",")[0]);
                 String data[]={i.split(",")[1],i.split(",")[3]};
@@ -303,6 +310,21 @@ public class EStoreUI extends javax.swing.JFrame {
         return Pattern.matches("[a-zA-Z][a-zA-Z ]*",p);
     
     }//GEN-LAST:event_searchXKeyReleased
+
+    private void buyBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buyBMouseClicked
+        // TODO add your handling code here:
+        
+        int sr = jTable1.getSelectedRow();
+        if(sr!=-1 && itemTypecb.getSelectedIndex()==0){
+            ob.buyBook((lst.get(sr)).split(",")[4]);
+            //System.out.println((lst.get(sr)).split(",")[4]);
+        }
+        if(sr!=-1 && itemTypecb.getSelectedIndex()==1){
+            ob.buyEquipment((lst.get(sr)).split(",")[4]);
+            //System.out.println((lst.get(sr)).split(",")[4]);
+        }
+        
+    }//GEN-LAST:event_buyBMouseClicked
 
     /**
      * @param args the command line arguments
