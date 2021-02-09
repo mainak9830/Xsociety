@@ -1,5 +1,9 @@
 
 import java.awt.Color;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -96,6 +100,7 @@ public class uploadUI extends javax.swing.JFrame {
         uploadB = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        Clipboardmsg = new javax.swing.JLabel();
 
         options.setBackground(new java.awt.Color(7, 95, 99));
 
@@ -310,6 +315,9 @@ public class uploadUI extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 2, 15)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 102, 102));
 
+        Clipboardmsg.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        Clipboardmsg.setText("*Click button to paste from clipboard");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -327,7 +335,8 @@ public class uploadUI extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(fileChb, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(fileChb, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Clipboardmsg))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -372,7 +381,9 @@ public class uploadUI extends javax.swing.JFrame {
                     .addComponent(pathTF, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(fileChb, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(uploadB, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(uploadB, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Clipboardmsg))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -459,7 +470,15 @@ public class uploadUI extends javax.swing.JFrame {
 
     private void fileChbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChbActionPerformed
         // TODO add your handling code here:
-        
+        Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
+        Transferable t = c.getContents(this);
+        if (t == null)
+            return;
+        try {
+            pathTF.setText((String) t.getTransferData(DataFlavor.stringFlavor));
+        } catch (Exception e){
+            e.printStackTrace();
+        }//try
     }//GEN-LAST:event_fileChbActionPerformed
 
     private void nameTFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameTFKeyReleased
@@ -527,6 +546,7 @@ public class uploadUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Clipboardmsg;
     private javax.swing.JButton HomeB;
     private javax.swing.JButton HomeB1;
     private javax.swing.JButton HomeB2;
