@@ -18,6 +18,7 @@ public class register extends javax.swing.JFrame {
     /**
      * Creates new form register
      */
+    UserManager obx = new UserManager();
     public register() {
         initComponents();
     }
@@ -387,18 +388,28 @@ public class register extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Field(s) Empty","FAILED",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_registerBtnActionPerformed
         else{
-            User new_user = new User(uid.getText(),pass.getText(),yearCB.getItemAt(deptCB.getSelectedIndex()),deptCB.getItemAt(deptCB.getSelectedIndex()),emailTX.getText(),cno.getText());
-            UserManager obx = new UserManager();
-            //System.out.println(new_user.toString());
             obx.init();
+            User chk = obx.searchUser(uid.getText());
+            if(chk != null){
+                JOptionPane.showMessageDialog(null,"User already Exists","Status",JOptionPane.ERROR_MESSAGE);
+            }
+            else{
+            User new_user = new User(uid.getText(),pass.getText(),yearCB.getItemAt(deptCB.getSelectedIndex()),deptCB.getItemAt(deptCB.getSelectedIndex()),emailTX.getText(),cno.getText());
+            
+            //System.out.println(new_user.toString());
+            
             if(obx.register(new_user))
                 JOptionPane.showMessageDialog(null,"REGISTRATION SUCCESSFULL","Status",JOptionPane.INFORMATION_MESSAGE);
+            }
         }}
     private void cpassKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpassKeyReleased
        String password =new String(pass.getText());
        String conpassword = new String(cpass.getText());
        if(password.compareTo(conpassword)!=0){
            jLabel16.setText("Passwords don't match");
+       }
+       else{
+           jLabel16.setText("");
        }
     }//GEN-LAST:event_cpassKeyReleased
 

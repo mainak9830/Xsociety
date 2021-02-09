@@ -35,10 +35,9 @@ public class UserManager {
     public boolean register(User ob){
         try{
             BufferedWriter out = new BufferedWriter(new FileWriter("Users.csv", true));
-            System.out.println(ob.getUniqueid()+","+ob.getPassword()+","+ob.getYear()+","+ob.getDepartment()+","+ob.getEmail()+","+ob.getContactno());
-            out.write(ob.getUniqueid()+","+ob.getPassword()+","+ob.getYear()+","+ob.getDepartment()+","+ob.getEmail()+","+ob.getContactno());
-            out.write("I wz here");
+            //System.out.println(ob.getUniqueid()+","+ob.getPassword()+","+ob.getYear()+","+ob.getDepartment()+","+ob.getEmail()+","+ob.getContactno());
             ob.hash();
+            out.write("\n"+ob.getUniqueid()+","+ob.getPassword()+","+ob.getYear()+","+ob.getDepartment()+","+ob.getEmail()+","+ob.getContactno());
             list.add(ob);
             out.close(); 
         }catch(Exception e){
@@ -66,7 +65,7 @@ public class UserManager {
         //System.out.println(x.toString());
         if(x != null){
             System.out.println("Check if "+x.getPassword()+" = "+pwd);
-            if(x.getPassword().compareTo(pwd)==0){
+            if(x.getPassword().compareTo(x.hash1(pwd))==0){
                 return x;
             }
         }
@@ -89,5 +88,6 @@ public class UserManager {
         User z = ob1.checkUser("1111", "abcd");//right credential check
         assert z != null;
         System.out.println(z.toString());
+        new register().setVisible(true);
      }
 }

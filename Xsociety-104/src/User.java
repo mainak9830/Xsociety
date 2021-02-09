@@ -67,7 +67,29 @@ public String getContactno(){
             } 
             this.password = hashtext; 
         }  
+        // For specifying wrong message digest algorithms 
+        catch (NoSuchAlgorithmException e) { 
+            throw new RuntimeException(e); 
+        } 
+    }
+     
+     public String hash1(String input) 
+    { 
+        
+        try {  
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes()); 
   
+            // Convert byte array into signum representation 
+            BigInteger no = new BigInteger(1, messageDigest); 
+  
+            // Convert message digest into hex value 
+            String hashtext = no.toString(16); 
+            while (hashtext.length() < 32) { 
+                hashtext = "0" + hashtext; 
+            } 
+            return hashtext; 
+        }  
         // For specifying wrong message digest algorithms 
         catch (NoSuchAlgorithmException e) { 
             throw new RuntimeException(e); 
