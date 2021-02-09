@@ -92,13 +92,10 @@ public class NotesManager {
         NotesManager x2 = new NotesManager();
         assert(x2.init() == true);
         
+        //assert x2.searchNotes("CS501").size() > 0;
         
-        
-        assert x2.searchNotes("CS501").size() > 0;
-        
-        x2.uploadNotes(new Resource("ESC501","OS","MAINAK","WWW."));
-       // ESC501,Fundamentals of Software Engineering,Rajib Mall,https://www.docdroid.net/gzKpqAI/software-engineering-rajib-mall-pdf
-        
+        //x2.uploadNotes(new Resource("ESC501","OS","MAINAK","WWW."));
+        new SearchUI().setVisible(true);        
         
   }
 }
