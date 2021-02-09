@@ -35,12 +35,15 @@ public class UserManager {
     public boolean register(User ob){
         try{
             BufferedWriter out = new BufferedWriter(new FileWriter("Users.csv", true));
+            System.out.println(ob.getUniqueid()+","+ob.getPassword()+","+ob.getYear()+","+ob.getDepartment()+","+ob.getEmail()+","+ob.getContactno());
             out.write(ob.getUniqueid()+","+ob.getPassword()+","+ob.getYear()+","+ob.getDepartment()+","+ob.getEmail()+","+ob.getContactno());
+            out.write("I wz here");
             ob.hash();
             list.add(ob);
             out.close(); 
         }catch(Exception e){
             System.err.println(e.getMessage());
+            return false;
         }
         return true;
     }
