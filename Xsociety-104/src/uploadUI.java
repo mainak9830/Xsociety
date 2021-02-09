@@ -26,6 +26,7 @@ public class uploadUI extends javax.swing.JFrame {
     /**
      * Creates new form uploadUI
      */
+    NotesManager NM = new NotesManager();
     public uploadUI() {
         initComponents();
         this.setLocation(100,100);
@@ -446,10 +447,11 @@ public class uploadUI extends javax.swing.JFrame {
         }
         else{
             String sbx = sb[jComboBox1.getSelectedIndex()];
-            Resource ob = new Resource(nameTF.getText(),sbx,authorTF.getText(),pathTF.getText());
+            Resource ob = new Resource(sbx,nameTF.getText(),authorTF.getText(),pathTF.getText());
             //ob.display();
-            new NotesManager().uploadNotes(ob);
-            JOptionPane.showMessageDialog(null,"UPLOAD SUCCESSFULL","Status",JOptionPane.INFORMATION_MESSAGE);
+            NM.init();
+            if(NM.uploadNotes(ob))
+                JOptionPane.showMessageDialog(null,"UPLOAD SUCCESSFUL","Status",JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);
             new uploadUI().setVisible(true);
         }
@@ -457,13 +459,7 @@ public class uploadUI extends javax.swing.JFrame {
 
     private void fileChbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChbActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser=new JFileChooser();
-        FileFilter filter = new FileNameExtensionFilter("files","pdf");
-        chooser.setFileFilter(filter);
-        chooser.showOpenDialog(null);
-        File f=chooser.getSelectedFile();
-        String filename=f.getAbsolutePath();
-        pathTF.setText(filename);
+        
     }//GEN-LAST:event_fileChbActionPerformed
 
     private void nameTFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameTFKeyReleased

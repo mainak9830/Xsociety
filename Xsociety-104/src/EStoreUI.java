@@ -9,6 +9,7 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import java.util.regex.Pattern;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.table.DefaultTableModel;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -80,15 +81,12 @@ public class EStoreUI extends javax.swing.JFrame {
         HomeB3 = new javax.swing.JButton();
         HomeB4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listX = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
         searchX = new javax.swing.JTextField();
         itemTypecb = new javax.swing.JComboBox();
         buyB = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        desc = new javax.swing.JTextArea();
-        jLabel3 = new javax.swing.JLabel();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -168,18 +166,16 @@ public class EStoreUI extends javax.swing.JFrame {
                 .addComponent(HomeB3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(HomeB4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 50)); // NOI18N
         jLabel1.setText("E - STORE");
 
-        listX.setSelectionBackground(new java.awt.Color(102, 102, 255));
-        jScrollPane1.setViewportView(listX);
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("SEARCH");
 
+        searchX.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         searchX.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchXKeyReleased(evt);
@@ -192,12 +188,23 @@ public class EStoreUI extends javax.swing.JFrame {
         buyB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buyB.setText("BUY");
 
-        desc.setColumns(20);
-        desc.setRows(5);
-        jScrollPane2.setViewportView(desc);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel3.setText("DESCRIPTION");
+            },
+            new String [] {
+                "Item name", "Price"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -208,20 +215,19 @@ public class EStoreUI extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(searchX, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buyB)
-                            .addComponent(jLabel3))))
-                .addGap(0, 21, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(searchX))
+                            .addComponent(buyB))
+                        .addGap(0, 54, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,21 +235,15 @@ public class EStoreUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel1)
-                .addGap(50, 50, 50)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(searchX, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchX, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(buyB))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buyB)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -283,21 +283,27 @@ public class EStoreUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         String tx = searchX.getText();
         if(NameCheck(tx)&&tx.endsWith(" ")){
-            DefaultListModel listModel = new DefaultListModel();
+            DefaultTableModel tb1Model = (DefaultTableModel)jTable1.getModel();
+            int rowCount = tb1Model.getRowCount();
+            for (int i = rowCount - 1; i >= 0; i--){
+                tb1Model.removeRow(i);
+            }
             int ch = itemTypecb.getSelectedIndex();
-            System.out.println(tx);
             ArrayList<String> lst = ob.getList(tx, ch);
             for(String i:lst){
                 System.out.println(i.split(",")[0]);
-                listModel.addElement(i.split(",")[0]);                
+                String data[]={i.split(",")[1],i.split(",")[3]};
+                System.out.println(i.split(",")[1]+"  "+i.split(",")[3]);
+                tb1Model.addRow(data);
             }
-            listX = new JList(listModel);
-            listX.setVisible(true);
+            
         }
-    }//GEN-LAST:event_searchXKeyReleased
+        }
     private boolean NameCheck(String p){
         return Pattern.matches("[a-zA-Z][a-zA-Z ]*",p);
-    }
+    
+    }//GEN-LAST:event_searchXKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -340,15 +346,12 @@ public class EStoreUI extends javax.swing.JFrame {
     private javax.swing.JButton HomeB3;
     private javax.swing.JButton HomeB4;
     private javax.swing.JButton buyB;
-    private javax.swing.JTextArea desc;
     private javax.swing.JComboBox itemTypecb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList listX;
+    private javax.swing.JTable jTable1;
     private javax.swing.JPanel options;
     private javax.swing.JTextField searchX;
     // End of variables declaration//GEN-END:variables

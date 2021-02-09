@@ -95,7 +95,8 @@ public class NotesManager {
         //assert x2.searchNotes("CS501").size() > 0;
         
         //x2.uploadNotes(new Resource("ESC501","OS","MAINAK","WWW."));
-        new SearchUI().setVisible(true);        
+        new SearchUI().setVisible(true);
+        //new uploadUI().setVisible(true);
         
   }
 }
