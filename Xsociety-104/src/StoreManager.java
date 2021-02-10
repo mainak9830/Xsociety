@@ -181,12 +181,13 @@ public class StoreManager {
         if(p!=null)
             System.out.println(p.toString());
         */
-        
+        /**
         Equipment q = ob.buyEquipment("1112");
         if(q!=null){
             System.out.println(q.toString());
         }
-        
+        * */
+        new EStoreUI().setVisible(true);
         
     }
 }
