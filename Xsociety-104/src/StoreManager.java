@@ -96,7 +96,7 @@ public class StoreManager {
                 }//end of inner if
             }//end of for
         }
-        if(ch==1){
+        else{ //for ch == 1
             for(Equipment i:eqtlist){
                 String h = i.getItemName().toLowerCase();
                 if(h.lastIndexOf(st.toLowerCase())!=-1){
@@ -181,12 +181,12 @@ public class StoreManager {
         if(p!=null)
             System.out.println(p.toString());
         */
-        /**
-        Equipment q = ob.buyEquipment("2000");
+        
+        Equipment q = ob.buyEquipment("1112");
         if(q!=null){
             System.out.println(q.toString());
         }
-        */
+        
         
     }
 }

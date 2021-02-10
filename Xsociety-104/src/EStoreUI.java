@@ -24,12 +24,14 @@ public class EStoreUI extends javax.swing.JFrame {
     /**
      * Creates new form EStoreUI
      */
+    UserManager UM = new UserManager();
     StoreManager ob;
+    TransactionManager TM;
     ArrayList<String> lst = new ArrayList<String>();//list of sorted items
     public EStoreUI() {
         ob = new StoreManager();
         ob.init();
-        
+        UM.init();
         initComponents();
         this.setTitle("EStoreUI - Kaustav Saha 104");
         this.setLocation(100,100);
@@ -325,13 +327,15 @@ public class EStoreUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int sr = jTable1.getSelectedRow();
-        if(sr!=-1 && itemTypecb.getSelectedIndex()==0){
-            ob.buyBook((lst.get(sr)).split(",")[4]);
-            //System.out.println((lst.get(sr)).split(",")[4]);
-        }
-        if(sr!=-1 && itemTypecb.getSelectedIndex()==1){
-            ob.buyEquipment((lst.get(sr)).split(",")[4]);
-            //System.out.println((lst.get(sr)).split(",")[4]);
+        if(sr!=-1){
+            if(itemTypecb.getSelectedIndex()==0){
+                ob.buyBook((lst.get(sr)).split(",")[4]);
+                //System.out.println((lst.get(sr)).split(",")[4]);
+            }
+            else{ //for itemTypecb.getSelectedIndex()==1
+                ob.buyEquipment((lst.get(sr)).split(",")[4]);
+            System.out.println((lst.get(sr)).split(",")[4]);
+            }
         }
         
     }//GEN-LAST:event_buyBMouseClicked
