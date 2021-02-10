@@ -77,17 +77,21 @@ public class UserManager {
         ob1.init();
         //assert ob1.list.size() ==2;//check if file is completely read into arraylist or not
         //ob1.register(new User("3333","bababholanath","3rd","CSE","xyz@gmail.com","90900093"));
+        
+        /**
         assert ob1.list.size() == 3;//check if new User added to list or not
         User x = ob1.searchUser("1111");
         assert x !=null;
         System.out.println(x.toString());
+        */
         
         //User y = ob1.checkUser("2000", "duhbwehbweihwieiewb");//wrong login credentials check
         //assert y == null;
-        
+        /**
         User z = ob1.checkUser("1111", "abcd");//right credential check
         assert z != null;
         System.out.println(z.toString());
+        */
         new register().setVisible(true);
      }
 }
