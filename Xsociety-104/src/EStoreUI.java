@@ -91,6 +91,7 @@ public class EStoreUI extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         searchHint = new javax.swing.JLabel();
+        listMsg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,7 +180,7 @@ public class EStoreUI extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("SEARCH");
 
-        searchX.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        searchX.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         searchX.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchXKeyReleased(evt);
@@ -197,6 +198,7 @@ public class EStoreUI extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -213,10 +215,15 @@ public class EStoreUI extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setRowHeight(20);
+        jTable1.setSelectionBackground(new java.awt.Color(255, 102, 102));
         jScrollPane2.setViewportView(jTable1);
 
         searchHint.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchHint.setText("Apply space after each word to search");
+        searchHint.setText("Apply space after word to search");
+
+        listMsg.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        listMsg.setForeground(new java.awt.Color(204, 0, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -225,20 +232,24 @@ public class EStoreUI extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(options, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(300, 300, 300)
-                        .addComponent(searchHint))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buyB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(listMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(31, 31, 31)
-                            .addComponent(searchX))
-                        .addComponent(buyB)))
+                            .addComponent(jLabel1)
+                            .addGap(300, 300, 300)
+                            .addComponent(searchHint))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(searchX)))))
                 .addGap(0, 54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -261,7 +272,9 @@ public class EStoreUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(buyB)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(buyB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(listMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -299,6 +312,7 @@ public class EStoreUI extends javax.swing.JFrame {
 
     private void searchXKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchXKeyReleased
         // TODO add your handling code here:
+        listMsg.setText("");
         String tx = searchX.getText();
         if(NameCheck(tx)&&tx.endsWith(" ")){
             DefaultTableModel tb1Model = (DefaultTableModel)jTable1.getModel();
@@ -309,13 +323,16 @@ public class EStoreUI extends javax.swing.JFrame {
             int ch = itemTypecb.getSelectedIndex();
             lst.clear();
             lst = ob.getList(tx, ch);
+            System.out.println("SIZE"+lst.size());
             for(String i:lst){
                 System.out.println(i.split(",")[0]);
                 String data[]={i.split(",")[1],i.split(",")[3]};
                 System.out.println(i.split(",")[1]+"  "+i.split(",")[3]);
                 tb1Model.addRow(data);
             }
-            
+            if(lst.size()==0){
+                listMsg.setText("NO MATCHES FOUND.");
+            }
         }
         }
     private boolean NameCheck(String p){
@@ -336,6 +353,9 @@ public class EStoreUI extends javax.swing.JFrame {
                 ob.buyEquipment((lst.get(sr)).split(",")[4]);
             System.out.println((lst.get(sr)).split(",")[4]);
             }
+        }
+        else{
+            listMsg.setText("NO ITEM SELECTED.");
         }
         
     }//GEN-LAST:event_buyBMouseClicked
@@ -388,6 +408,7 @@ public class EStoreUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel listMsg;
     private javax.swing.JPanel options;
     private javax.swing.JLabel searchHint;
     private javax.swing.JTextField searchX;
