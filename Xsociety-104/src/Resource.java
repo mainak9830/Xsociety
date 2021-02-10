@@ -5,7 +5,7 @@
  */
 /**
  *
- * @author Kaustav
+ * @author Mainak
  */
 public class Resource {
     private String subj;
