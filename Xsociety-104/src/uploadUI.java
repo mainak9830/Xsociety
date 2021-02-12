@@ -30,8 +30,11 @@ public class uploadUI extends javax.swing.JFrame {
     /**
      * Creates new form uploadUI
      */
-    NotesManager NM = new NotesManager();
-    public uploadUI() {
+    DisplayManager HeadMgr;
+    NotesManager NM;
+    public uploadUI(DisplayManager ob,NotesManager ob1) {
+        HeadMgr = ob;
+        NM = ob1;
         initComponents();
         this.setLocation(100,100);
         this.setTitle("uploadUI - Deep Roy 117");
@@ -208,6 +211,11 @@ public class uploadUI extends javax.swing.JFrame {
         HomeB7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/shop.png"))); // NOI18N
         HomeB7.setBorder(null);
         HomeB7.setPreferredSize(new java.awt.Dimension(90, 90));
+        HomeB7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB7MouseClicked(evt);
+            }
+        });
 
         HomeB8.setBackground(new java.awt.Color(7, 95, 99));
         HomeB8.setForeground(new java.awt.Color(7, 95, 99));
@@ -414,8 +422,7 @@ public class uploadUI extends javax.swing.JFrame {
     private void HomeB6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB6MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        SearchUI obx = new SearchUI();
-        obx.setVisible(true);
+        HeadMgr.dispSearchUI();
     }//GEN-LAST:event_HomeB6MouseClicked
 
     private void HomeB9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB9MouseClicked
@@ -426,7 +433,7 @@ public class uploadUI extends javax.swing.JFrame {
     private void HomeB5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB5MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new DashboardUI().setVisible(true);
+        
     }//GEN-LAST:event_HomeB5MouseClicked
 
     private void uploadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadBActionPerformed
@@ -464,7 +471,8 @@ public class uploadUI extends javax.swing.JFrame {
             if(NM.uploadNotes(ob))
                 JOptionPane.showMessageDialog(null,"UPLOAD SUCCESSFUL","Status",JOptionPane.INFORMATION_MESSAGE);
             this.setVisible(false);
-            new uploadUI().setVisible(true);
+            this.dispose();
+            HeadMgr.dispUploadUI();
         }
     }//GEN-LAST:event_uploadBActionPerformed
 
@@ -510,6 +518,11 @@ public class uploadUI extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_authorTFKeyReleased
 
+    private void HomeB7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB7MouseClicked
+        // TODO add your handling code here:
+        HeadMgr.dispEStoreUI();
+    }//GEN-LAST:event_HomeB7MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -540,7 +553,7 @@ public class uploadUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new uploadUI().setVisible(true);
+                new uploadUI(null,null).setVisible(true);
             }
         });
     }

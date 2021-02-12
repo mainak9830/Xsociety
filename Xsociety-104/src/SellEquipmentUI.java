@@ -21,7 +21,11 @@ public class SellEquipmentUI extends javax.swing.JFrame {
     /**
      * Creates new form uploadEquipment
      */
-    public SellEquipmentUI() {
+    DisplayManager HeadMgr;
+    StoreManager SM;
+    public SellEquipmentUI(DisplayManager ob,StoreManager ob1) {
+        HeadMgr = ob;
+        SM = ob1;
         initComponents();
         this.setTitle("sellEquipmentUI - Maitri Roy 96");
         this.setLocation(100,100);
@@ -304,14 +308,14 @@ public class SellEquipmentUI extends javax.swing.JFrame {
     private void HomeB6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB6MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new SearchUI().setVisible(true);
+        HeadMgr.dispSearchUI();
 
     }//GEN-LAST:event_HomeB6MouseClicked
 
     private void HomeB7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB7MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new EStoreUI().setVisible(true);
+        HeadMgr.dispEStoreUI();
     }//GEN-LAST:event_HomeB7MouseClicked
 
     private void HomeB9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB9MouseClicked
@@ -338,41 +342,41 @@ public class SellEquipmentUI extends javax.swing.JFrame {
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
         if(set2.getText().length()<=0 || set2.getText().equals("ENTER THE PRICE"))
-				{
-					JOptionPane.showMessageDialog(null,"Please enter a price");
-					
-				}
-				else if(Pattern.matches(".*\\D.*",set2.getText()))
-				{
-					JOptionPane.showMessageDialog(null,"Only numerical values accepted");
-				}
-				
-				else if(set2.getText().length()>3)
-				{
-					JOptionPane.showMessageDialog(null,"Maximum price limit exceeded");
-					
-				}
-				
-				else
-				{
-					if(Pattern.matches("^[a-zA-Z]+",l2.getText())&&set2.getText().length()<=3&&
-							(!Pattern.matches(".*\\D.*",set2.getText())))
-				
-					{
-					JOptionPane.showMessageDialog(null,"YOUR ITEM HAS BEEN ADDED");
-					}
-					
-					else
-					{
-						JOptionPane.showMessageDialog(null,"SORRY TRY AGAIN");
-					}
-				}
+                            {
+                                    JOptionPane.showMessageDialog(null,"Please enter a price");
+
+                            }
+                            else if(Pattern.matches(".*\\D.*",set2.getText()))
+                            {
+                                    JOptionPane.showMessageDialog(null,"Only numerical values accepted");
+                            }
+
+                            else if(set2.getText().length()>3)
+                            {
+                                    JOptionPane.showMessageDialog(null,"Maximum price limit exceeded");
+
+                            }
+
+                            else
+                            {
+                                    if(Pattern.matches("^[a-zA-Z]+",l2.getText())&&set2.getText().length()<=3&&
+                                                    (!Pattern.matches(".*\\D.*",set2.getText())))
+
+                                    {
+                                    JOptionPane.showMessageDialog(null,"YOUR ITEM HAS BEEN ADDED");
+                                    }
+
+                                    else
+                                    {
+                                            JOptionPane.showMessageDialog(null,"SORRY TRY AGAIN");
+                                    }
+                            }
     }//GEN-LAST:event_confirmActionPerformed
 
     private void HomeB5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB5MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new DashboardUI().setVisible(true);
+        HeadMgr.dispDashboardUI();
     }//GEN-LAST:event_HomeB5MouseClicked
 
     /**
@@ -406,7 +410,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SellEquipmentUI().setVisible(true);
+                new SellEquipmentUI(null,null).setVisible(true);
             }
         });
     }

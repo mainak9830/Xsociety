@@ -23,7 +23,13 @@ public class SellBookUI extends javax.swing.JFrame {
     /**
      * Creates new form SellBookUI
      */
-    public SellBookUI() {
+    private DisplayManager HeadMgr;
+    private StoreManager SM;
+    private User current_user;
+    public SellBookUI(DisplayManager ob,StoreManager ob1,User ob2) {
+        HeadMgr = ob;
+        SM = ob1;
+        current_user = ob2;
         initComponents();
         this.setTitle("SellBookUI - Mainak Adak 97");
         this.setLocation(100,100);
@@ -113,12 +119,22 @@ public class SellBookUI extends javax.swing.JFrame {
         HomeB1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book.png"))); // NOI18N
         HomeB1.setBorder(null);
         HomeB1.setPreferredSize(new java.awt.Dimension(90, 90));
+        HomeB1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void MouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB1MouseClicked(evt);
+            }           
+        });
 
         HomeB2.setBackground(new java.awt.Color(7, 95, 99));
         HomeB2.setForeground(new java.awt.Color(7, 95, 99));
         HomeB2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/shop.png"))); // NOI18N
         HomeB2.setBorder(null);
         HomeB2.setPreferredSize(new java.awt.Dimension(90, 90));
+        HomeB2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void MouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB2MouseClicked(evt);
+            }           
+        });
 
         HomeB3.setBackground(new java.awt.Color(7, 95, 99));
         HomeB3.setForeground(new java.awt.Color(7, 95, 99));
@@ -199,7 +215,7 @@ public class SellBookUI extends javax.swing.JFrame {
         });
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCC-CS501", "PCC-CS502", "PCC-CS503", "PCC-CS504", " " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ESC501", "CS501", "CS502", "CS503" }));
         jComboBox1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jComboBox1MouseClicked(evt);
@@ -344,7 +360,7 @@ public class SellBookUI extends javax.swing.JFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         String text=jTextField2.getText();
-        Boolean flag=true;
+        
         if(checkNameOrBook(text)){
             jTextField2.setBackground(Color.white);
         }
@@ -376,7 +392,6 @@ public class SellBookUI extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         jLabel6.setText("");
         String text=jTextField1.getText();
-        boolean numeric = true;
 
         if(checkPrice(text)){
             jTextField1.setBackground(Color.white);
@@ -393,6 +408,14 @@ public class SellBookUI extends javax.swing.JFrame {
         if(checkNameOrBook(jTextField3.getText()) && checkNameOrBook(jTextField2.getText()) && checkPrice(jTextField1.getText())){
             jLabel6.setVisible(true);
             jLabel6.setText("Seller Details Added to the Database");
+            String subjCode[]={ "ESC501", "CS501", "CS502", "CS503" };
+            System.out.println(subjCode[jComboBox1.getSelectedIndex()]);
+            System.out.println(jTextField1.getText());
+            System.out.println(jTextField2.getText());
+            System.out.println(jTextField3.getText());
+            System.out.println(HeadMgr.getUser().toString());
+            //System.out.println(current_user.getUniqueid());
+            //SM.addItem(new Book(subjCode[jComboBox1.getSelectedIndex()],jTextField1.getText(),Float.parseFloat(jTextField2.getText()),jTextField3.getText(),Integer.parseInt(current_user.getUniqueid())));
         }
         else{
             jLabel6.setVisible(true);
@@ -435,8 +458,14 @@ public class SellBookUI extends javax.swing.JFrame {
     private void HomeBMouseClicked(java.awt.event.MouseEvent evt) {                                   
         // TODO add your handling code here:
         this.dispose();
-        new DashboardUI().setVisible(true);
-    }    
+        HeadMgr.dispDashboardUI();
+    }
+    private void HomeB1MouseClicked(java.awt.event.MouseEvent evt) { 
+        HeadMgr.dispSearchUI();
+    }
+    private void HomeB2MouseClicked(java.awt.event.MouseEvent evt) { 
+        HeadMgr.dispEStoreUI();
+    }
     
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
         String text=jTextField1.getText();
@@ -481,18 +510,18 @@ public class SellBookUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SellBookUI().setVisible(true);
+                new SellBookUI(null,null,null).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BaseUI;
-    private javax.swing.JButton HomeB;
-    private javax.swing.JButton HomeB1;
-    private javax.swing.JButton HomeB2;
-    private javax.swing.JButton HomeB3;
-    private javax.swing.JButton HomeB4;
+    private javax.swing.JButton HomeB;//Dashboard
+    private javax.swing.JButton HomeB1;//SearchUI
+    private javax.swing.JButton HomeB2;//Store
+    private javax.swing.JButton HomeB3;//Settings
+    private javax.swing.JButton HomeB4;//Exit
     private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
@@ -501,9 +530,9 @@ public class SellBookUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField1;//price
+    private javax.swing.JTextField jTextField2;//item name
+    private javax.swing.JTextField jTextField3;//author name
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JPanel options;
     // End of variables declaration//GEN-END:variables

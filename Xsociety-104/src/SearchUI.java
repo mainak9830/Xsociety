@@ -133,6 +133,11 @@ public class SearchUI extends javax.swing.JFrame {
         HomeB8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cog.png"))); // NOI18N
         HomeB8.setBorder(null);
         HomeB8.setPreferredSize(new java.awt.Dimension(90, 90));
+        HomeB8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB8MouseClicked(evt);
+            }
+        });
 
         HomeB9.setBackground(new java.awt.Color(7, 95, 99));
         HomeB9.setForeground(new java.awt.Color(7, 95, 99));
@@ -400,8 +405,13 @@ public class SearchUI extends javax.swing.JFrame {
     private void HomeB7MouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
         this.dispose();
+        HeadMgr.dispEStoreUI();
         //new EStoreUI().setVisible(true);
     }     
+    private void HomeB8MouseClicked(java.awt.event.MouseEvent evt) { 
+        System.exit(0);
+    }
+    
     /**
      * @param args the command line arguments
      */

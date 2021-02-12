@@ -24,14 +24,17 @@ public class EStoreUI extends javax.swing.JFrame {
     /**
      * Creates new form EStoreUI
      */
-    UserManager UM = new UserManager();
-    StoreManager ob;
-    TransactionManager TM;
+    private DisplayManager HeadMgr;
+    private UserManager UM;
+    private StoreManager SM;
+    private TransactionManager TM;
+    private User currentUser;
     ArrayList<String> lst = new ArrayList<String>();//list of sorted items
-    public EStoreUI() {
-        ob = new StoreManager();
-        ob.init();
-        UM.init();
+    public EStoreUI(DisplayManager ob,StoreManager ob1,UserManager ob2,User ob3) {
+        HeadMgr = ob;
+        SM = ob1;
+        UM = ob2;
+        currentUser = ob3;
         initComponents();
         this.setTitle("EStoreUI - Kaustav Saha 104");
         this.setLocation(100,100);
@@ -92,6 +95,8 @@ public class EStoreUI extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         searchHint = new javax.swing.JLabel();
         listMsg = new javax.swing.JLabel();
+        sellBookBtn = new javax.swing.JButton();
+        sellEqpBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -225,6 +230,23 @@ public class EStoreUI extends javax.swing.JFrame {
         listMsg.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         listMsg.setForeground(new java.awt.Color(204, 0, 51));
 
+        sellBookBtn.setText("SELL BOOK");
+        sellBookBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sellBookBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sellBookBtnMouseClicked(evt);
+            }
+        });
+
+        sellEqpBtn.setText("SELL EQUIPMENT");
+        sellEqpBtn.setToolTipText("");
+        sellEqpBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        sellEqpBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sellEqpBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -236,7 +258,12 @@ public class EStoreUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(buyB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(listMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(sellBookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listMsg, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(sellEqpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
@@ -273,8 +300,11 @@ public class EStoreUI extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(buyB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(listMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(buyB)
+                        .addComponent(sellBookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(listMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sellEqpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -295,7 +325,7 @@ public class EStoreUI extends javax.swing.JFrame {
     private void HomeB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB1MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new SearchUI().setVisible(true);
+        HeadMgr.dispSearchUI();
 
     }//GEN-LAST:event_HomeB1MouseClicked
 
@@ -307,7 +337,7 @@ public class EStoreUI extends javax.swing.JFrame {
     private void HomeBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeBMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new DashboardUI().setVisible(true);
+        HeadMgr.dispDashboardUI();
     }//GEN-LAST:event_HomeBMouseClicked
 
     private void searchXKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchXKeyReleased
@@ -322,7 +352,7 @@ public class EStoreUI extends javax.swing.JFrame {
             }
             int ch = itemTypecb.getSelectedIndex();
             lst.clear();
-            lst = ob.getList(tx, ch);
+            lst = SM.getList(tx, ch);
             System.out.println("SIZE"+lst.size());
             for(String i:lst){
                 System.out.println(i.split(",")[0]);
@@ -346,11 +376,11 @@ public class EStoreUI extends javax.swing.JFrame {
         int sr = jTable1.getSelectedRow();
         if(sr!=-1){
             if(itemTypecb.getSelectedIndex()==0){
-                ob.buyBook((lst.get(sr)).split(",")[4]);
+                SM.buyBook((lst.get(sr)).split(",")[4]);
                 //System.out.println((lst.get(sr)).split(",")[4]);
             }
             else{ //for itemTypecb.getSelectedIndex()==1
-                ob.buyEquipment((lst.get(sr)).split(",")[4]);
+                SM.buyEquipment((lst.get(sr)).split(",")[4]);
             System.out.println((lst.get(sr)).split(",")[4]);
             }
         }
@@ -359,6 +389,16 @@ public class EStoreUI extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_buyBMouseClicked
+
+    private void sellBookBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sellBookBtnMouseClicked
+        // TODO add your handling code here:
+        HeadMgr.dispSellBookUI();
+    }//GEN-LAST:event_sellBookBtnMouseClicked
+
+    private void sellEqpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sellEqpBtnMouseClicked
+        // TODO add your handling code here:
+        HeadMgr.dispSellEquipmentUI();
+    }//GEN-LAST:event_sellEqpBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -390,7 +430,7 @@ public class EStoreUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EStoreUI().setVisible(true);
+                new EStoreUI(null,null,null,null).setVisible(true);
             }
         });
     }
@@ -412,5 +452,7 @@ public class EStoreUI extends javax.swing.JFrame {
     private javax.swing.JPanel options;
     private javax.swing.JLabel searchHint;
     private javax.swing.JTextField searchX;
+    private javax.swing.JButton sellBookBtn;
+    private javax.swing.JButton sellEqpBtn;
     // End of variables declaration//GEN-END:variables
 }

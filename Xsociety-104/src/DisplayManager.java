@@ -43,6 +43,9 @@ public class DisplayManager {
     public void setUser(User X){//X is currently logged in User extracted from Log In page
         this.current_user = X;
     }
+    public User getUser(){
+        return this.current_user;
+    }
     public void dispLoginUI(){
         loginScreen.setVisible(true);
     }
@@ -56,10 +59,10 @@ public class DisplayManager {
         searchScreen.setVisible(true);
     }
     public void dispEStoreUI(){
-        uploadScreen.setVisible(true);
+        estoreScreen.setVisible(true);
     }
     public void dispUploadUI(){
-        estoreScreen.setVisible(true);
+        uploadScreen.setVisible(true);
     }
     public void dispSellBookUI(){
         sellbookScreen.setVisible(true);
@@ -71,17 +74,16 @@ public class DisplayManager {
         
     }
     
-    
     public static void main(String args[]){
         DisplayManager startMG = new DisplayManager();
         startMG.loginScreen=new LoginUI(startMG,startMG.UM);
         startMG.registerScreen=new RegisterUI(startMG,startMG.UM);
         startMG.dashboardScreen = new DashboardUI(startMG);
         startMG.searchScreen=new SearchUI(startMG,startMG.NM);
-        startMG.uploadScreen=new uploadUI();
-        startMG.estoreScreen=new EStoreUI();
-        startMG.sellbookScreen=new SellBookUI();
-        startMG.selleqpScreen=new SellEquipmentUI();
+        startMG.estoreScreen=new EStoreUI(startMG,startMG.SM,startMG.UM,startMG.current_user);
+        startMG.uploadScreen=new uploadUI(startMG,startMG.NM);
+        startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM,startMG.current_user);
+        //startMG.selleqpScreen=new SellEquipmentUI();
         startMG.dispLoginUI();
     }
     //Test case : UID - 8888 , pwd - 88888888

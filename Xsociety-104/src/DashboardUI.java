@@ -269,14 +269,13 @@ public class DashboardUI extends javax.swing.JFrame {
     private void upBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upBMouseClicked
         // TODO add your handling code here:
         this.dispose();
-        uploadUI ob = new uploadUI();
-        ob.setVisible(true);
+        HeadMgr.dispUploadUI();
     }//GEN-LAST:event_upBMouseClicked
 
     private void HomeB2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB2MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new EStoreUI().setVisible(true);
+        HeadMgr.dispEStoreUI();
     }//GEN-LAST:event_HomeB2MouseClicked
 
     /**

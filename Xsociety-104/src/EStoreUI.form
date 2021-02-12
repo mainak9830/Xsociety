@@ -50,7 +50,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="buyB" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="sellBookBtn" min="-2" pref="131" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="listMsg" min="-2" pref="195" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="sellEqpBtn" min="-2" pref="147" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
@@ -99,8 +104,12 @@
                   <Component id="jScrollPane2" min="-2" pref="309" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="buyB" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="buyB" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="sellBookBtn" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="listMsg" max="32767" attributes="0"/>
+                      <Component id="sellEqpBtn" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -349,6 +358,33 @@
               <Color blue="33" green="0" red="cc" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="sellBookBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SELL BOOK"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sellBookBtnMouseClicked"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="sellEqpBtn">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SELL EQUIPMENT"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="sellEqpBtnMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

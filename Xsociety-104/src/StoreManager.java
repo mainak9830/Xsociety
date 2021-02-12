@@ -187,7 +187,7 @@ public class StoreManager {
             System.out.println(q.toString());
         }
         * */
-        new EStoreUI().setVisible(true);
+        
         
     }
 }
