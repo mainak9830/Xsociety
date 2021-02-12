@@ -13,7 +13,7 @@ IEM 3rd year(2018-2022) batch OOP project
 ## Task List:
 - [x] Entity + Control CLasses, Unit Tests :open_file_folder:
 - [x] Entity + Control, integrated with Boundary/Swing Classes :link:
-- [ ] Integration of all use cases :nut_and_bolt:
+- [x] Integration of all use cases :nut_and_bolt:
 - [ ] System Testing :wrench:
 - [ ] Bug Fixes :beetle:
 - [ ] Release 1.0 :checkered_flag:
