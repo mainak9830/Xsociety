@@ -123,6 +123,11 @@ public class uploadUI extends javax.swing.JFrame {
                 HomeB1MouseClicked(evt);
             }
         });
+        HomeB1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeB1ActionPerformed(evt);
+            }
+        });
 
         HomeB2.setBackground(new java.awt.Color(7, 95, 99));
         HomeB2.setForeground(new java.awt.Color(7, 95, 99));
@@ -433,7 +438,7 @@ public class uploadUI extends javax.swing.JFrame {
     private void HomeB5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB5MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        
+        HeadMgr.dispDashboardUI();
     }//GEN-LAST:event_HomeB5MouseClicked
 
     private void uploadBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadBActionPerformed
@@ -520,8 +525,13 @@ public class uploadUI extends javax.swing.JFrame {
 
     private void HomeB7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB7MouseClicked
         // TODO add your handling code here:
+        this.dispose();
         HeadMgr.dispEStoreUI();
     }//GEN-LAST:event_HomeB7MouseClicked
+
+    private void HomeB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeB1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HomeB1ActionPerformed
 
     /**
      * @param args the command line arguments

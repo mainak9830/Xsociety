@@ -54,12 +54,14 @@ public class DisplayManager {
     }
     public void dispDashboardUI(){
         dashboardScreen.setVisible(true);
+        dashboardScreen.setUID();
     }
     public void dispSearchUI(){
         searchScreen.setVisible(true);
     }
     public void dispEStoreUI(){
         estoreScreen.setVisible(true);
+        estoreScreen.setUID();
     }
     public void dispUploadUI(){
         uploadScreen.setVisible(true);
