@@ -25,11 +25,9 @@ public class SellBookUI extends javax.swing.JFrame {
      */
     private DisplayManager HeadMgr;
     private StoreManager SM;
-    private User current_user;
-    public SellBookUI(DisplayManager ob,StoreManager ob1,User ob2) {
+    public SellBookUI(DisplayManager ob,StoreManager ob1) {
         HeadMgr = ob;
         SM = ob1;
-        current_user = ob2;
         initComponents();
         this.setTitle("SellBookUI - Mainak Adak 97");
         this.setLocation(100,100);
@@ -409,13 +407,12 @@ public class SellBookUI extends javax.swing.JFrame {
             jLabel6.setVisible(true);
             jLabel6.setText("Seller Details Added to the Database");
             String subjCode[]={ "ESC501", "CS501", "CS502", "CS503" };
-            System.out.println(subjCode[jComboBox1.getSelectedIndex()]);
-            System.out.println(jTextField1.getText());
-            System.out.println(jTextField2.getText());
-            System.out.println(jTextField3.getText());
-            System.out.println(HeadMgr.getUser().toString());
-            //System.out.println(current_user.getUniqueid());
-            //SM.addItem(new Book(subjCode[jComboBox1.getSelectedIndex()],jTextField1.getText(),Float.parseFloat(jTextField2.getText()),jTextField3.getText(),Integer.parseInt(current_user.getUniqueid())));
+            //System.out.println(subjCode[jComboBox1.getSelectedIndex()]);
+            //System.out.println(jTextField1.getText());
+            //System.out.println(jTextField2.getText());
+            //System.out.println(jTextField3.getText());
+            //System.out.println(HeadMgr.getUser().toString());
+            SM.addItem(new Book(subjCode[jComboBox1.getSelectedIndex()],jTextField2.getText(),Float.parseFloat(jTextField1.getText()),jTextField3.getText(),Integer.parseInt(HeadMgr.getUser().getUniqueid())));
         }
         else{
             jLabel6.setVisible(true);
@@ -510,7 +507,7 @@ public class SellBookUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SellBookUI(null,null,null).setVisible(true);
+                new SellBookUI(null,null).setVisible(true);
             }
         });
     }

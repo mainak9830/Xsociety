@@ -59,8 +59,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
             } );
         }
         
-        upload.setVisible(false);
-        btnx.setVisible(false);
+        linkTXT.setVisible(false);
         price.setVisible(false);
         set2.setVisible(false);
         confirm.setVisible(false);
@@ -90,10 +89,10 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         l4 = new javax.swing.JComboBox();
         add = new javax.swing.JButton();
         price = new javax.swing.JLabel();
-        upload = new javax.swing.JTextField();
-        btnx = new javax.swing.JButton();
+        linkTXT = new javax.swing.JTextField();
         set2 = new javax.swing.JTextField();
         confirm = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,7 +195,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         jLabel2.setText("LABCODE");
 
         l4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        l4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "PCC-CS501", "MC-CS501", "ESC-CS501", "PCC-CS503" }));
+        l4.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "ESC501", "CS501", "CS502", "CS503" }));
 
         add.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         add.setText("ADD");
@@ -209,12 +208,9 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         price.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         price.setText("SET PRICE");
 
-        upload.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        upload.setText("---CHOOSE A FILE---");
-        upload.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        btnx.setText("UPLOAD A PICTURE");
-        btnx.setBorder(null);
+        linkTXT.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        linkTXT.setText("---ENTER LINK---");
+        linkTXT.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         set2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         set2.setText("ENTER THE PRICE");
@@ -227,6 +223,9 @@ public class SellEquipmentUI extends javax.swing.JFrame {
                 confirmActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setText("ENTER LINK OF ITEM PICTURE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -253,10 +252,10 @@ public class SellEquipmentUI extends javax.swing.JFrame {
                                 .addGap(71, 71, 71)
                                 .addComponent(set2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(upload, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnx, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 220, Short.MAX_VALUE))
+                                .addComponent(linkTXT, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 81, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(confirm, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,9 +279,12 @@ public class SellEquipmentUI extends javax.swing.JFrame {
                 .addComponent(add, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnx, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(upload))
-                .addGap(62, 62, 62)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(linkTXT)
+                        .addGap(62, 62, 62))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(price)
                     .addComponent(set2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -295,11 +297,11 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1010, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -331,8 +333,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         }
         String str = l2.getText();
         if(Pattern.matches("^[a-zA-Z]+",str)){
-            upload.setVisible(true);
-            btnx.setVisible(true);
+            linkTXT.setVisible(true);
             price.setVisible(true);
             set2.setVisible(true);
             confirm.setVisible(true);
@@ -363,7 +364,14 @@ public class SellEquipmentUI extends javax.swing.JFrame {
                                                     (!Pattern.matches(".*\\D.*",set2.getText())))
 
                                     {
-                                    JOptionPane.showMessageDialog(null,"YOUR ITEM HAS BEEN ADDED");
+                                        String subj[]={"ESC501","CS501","CS502","CS503"};
+                                        //System.out.println(subj[l4.getSelectedIndex()]);
+                                        //System.out.println(l2.getText());
+                                        //System.out.println(set2.getText());
+                                        //System.out.println(linkTXT.getText());
+                                        //System.out.println(HeadMgr.getUser().getUniqueid());
+                                        SM.addItem(new Equipment(subj[l4.getSelectedIndex()],l2.getText(),Float.parseFloat(set2.getText()),linkTXT.getText(),Integer.parseInt(HeadMgr.getUser().getUniqueid())));
+                                        JOptionPane.showMessageDialog(null,"YOUR ITEM HAS BEEN ADDED");
                                     }
 
                                     else
@@ -422,17 +430,17 @@ public class SellEquipmentUI extends javax.swing.JFrame {
     private javax.swing.JButton HomeB8;
     private javax.swing.JButton HomeB9;
     private javax.swing.JButton add;
-    private javax.swing.JButton btnx;
     private javax.swing.JButton confirm;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel l1;
     private javax.swing.JTextField l2;
     private javax.swing.JComboBox l4;
+    private javax.swing.JTextField linkTXT;
     private javax.swing.JPanel options1;
     private javax.swing.JLabel price;
     private javax.swing.JTextField set2;
-    private javax.swing.JTextField upload;
     // End of variables declaration//GEN-END:variables
 }

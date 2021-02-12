@@ -82,8 +82,8 @@ public class DisplayManager {
         startMG.searchScreen=new SearchUI(startMG,startMG.NM);
         startMG.estoreScreen=new EStoreUI(startMG,startMG.SM,startMG.UM,startMG.current_user);
         startMG.uploadScreen=new uploadUI(startMG,startMG.NM);
-        startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM,startMG.current_user);
-        //startMG.selleqpScreen=new SellEquipmentUI();
+        startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM);
+        startMG.selleqpScreen=new SellEquipmentUI(startMG,startMG.SM);
         startMG.dispLoginUI();
     }
     //Test case : UID - 8888 , pwd - 88888888

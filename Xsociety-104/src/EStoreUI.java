@@ -392,11 +392,13 @@ public class EStoreUI extends javax.swing.JFrame {
 
     private void sellBookBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sellBookBtnMouseClicked
         // TODO add your handling code here:
+        this.dispose();
         HeadMgr.dispSellBookUI();
     }//GEN-LAST:event_sellBookBtnMouseClicked
 
     private void sellEqpBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sellEqpBtnMouseClicked
         // TODO add your handling code here:
+        this.dispose();
         HeadMgr.dispSellEquipmentUI();
     }//GEN-LAST:event_sellEqpBtnMouseClicked
 
