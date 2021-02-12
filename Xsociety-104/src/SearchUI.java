@@ -21,9 +21,12 @@ public class SearchUI extends javax.swing.JFrame {
     /**
      * Creates new form SearchUI
      */
-    public SearchUI() {
+    private DisplayManager HeadMgr;
+    private NotesManager NM;
+    public SearchUI(DisplayManager ob,NotesManager ob1) {
+        HeadMgr = ob;
+        NM = ob1;
         initComponents();
-        nmg=new NotesManager();
         this.setLocation(100,100);
         this.setTitle("EStoreUI - Kaustav Saha 104");
         JButton [] btns = { HomeB5,HomeB6,HomeB7,HomeB8,HomeB9};
@@ -297,10 +300,10 @@ public class SearchUI extends javax.swing.JFrame {
         String[] strArray = subj.split(" ");  
         subj=strArray[strArray.length -1];
         
-        nmg.init();
+        NM.init();
         //list=nmg.getList(subj);
        ArrayList<Resource> temp_list = new ArrayList<Resource>();
-       temp_list = nmg.searchNotes(subj);
+       temp_list = NM.searchNotes(subj);
        System.out.println(subj);
        if(subj.compareTo("ESC501")==0){
             SWEcb.removeAllItems();
@@ -356,25 +359,25 @@ public class SearchUI extends javax.swing.JFrame {
        
         try{
         if(SWEcb.isVisible()){
-                    nurl = nmg.getUrls().get(SWEcb.getSelectedIndex());
+                    nurl = NM.getUrls().get(SWEcb.getSelectedIndex());
                     URI uri= new URI(nurl);
                     java.awt.Desktop.getDesktop().browse(uri);
                     msg.setText(nurl);
         }
         else if(OScb.isVisible()){
-                    nurl = nmg.getUrls().get(OScb.getSelectedIndex());
+                    nurl = NM.getUrls().get(OScb.getSelectedIndex());
                     URI uri= new URI(nurl);
                     java.awt.Desktop.getDesktop().browse(uri);
                     msg.setText(nurl);
         }
         else if(OOPcb.isVisible()){
-                    nurl = nmg.getUrls().get(OOPcb.getSelectedIndex());
+                    nurl = NM.getUrls().get(OOPcb.getSelectedIndex());
                     URI uri= new URI(nurl);
                     java.awt.Desktop.getDesktop().browse(uri);
                     msg.setText(nurl);
         }
         else if(Compilercb.isVisible()){
-                    nurl = nmg.getUrls().get(Compilercb.getSelectedIndex());
+                    nurl = NM.getUrls().get(Compilercb.getSelectedIndex());
                     URI uri= new URI(nurl);
                     java.awt.Desktop.getDesktop().browse(uri);
                     msg.setText(nurl);
@@ -392,7 +395,7 @@ public class SearchUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
         //DashboardUI ob = new DashboardUI();
-        this.main(null);
+        HeadMgr.dispDashboardUI();
     }                                   
     private void HomeB7MouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
@@ -429,12 +432,11 @@ public class SearchUI extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new SearchUI().setVisible(true);
+            new SearchUI(null,null).setVisible(true);
         });
     }
 
     // Variables declaration - do not modify
-    private NotesManager nmg;
     private String nurl;
    
     private ArrayList<String> list;

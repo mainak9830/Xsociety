@@ -16,12 +16,12 @@ import javax.swing.plaf.basic.BasicButtonUI;
  *
  * @author Kaustav
  */
-public class uploadEquipment extends javax.swing.JFrame {
+public class SellEquipmentUI extends javax.swing.JFrame {
 
     /**
      * Creates new form uploadEquipment
      */
-    public uploadEquipment() {
+    public SellEquipmentUI() {
         initComponents();
         this.setTitle("sellEquipmentUI - Maitri Roy 96");
         this.setLocation(100,100);
@@ -392,30 +392,26 @@ public class uploadEquipment extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(uploadEquipment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SellEquipmentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(uploadEquipment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SellEquipmentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(uploadEquipment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SellEquipmentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(uploadEquipment.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SellEquipmentUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new uploadEquipment().setVisible(true);
+                new SellEquipmentUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton HomeB;
-    private javax.swing.JButton HomeB1;
-    private javax.swing.JButton HomeB2;
-    private javax.swing.JButton HomeB3;
-    private javax.swing.JButton HomeB4;
     private javax.swing.JButton HomeB5;
     private javax.swing.JButton HomeB6;
     private javax.swing.JButton HomeB7;
@@ -430,7 +426,6 @@ public class uploadEquipment extends javax.swing.JFrame {
     private javax.swing.JLabel l1;
     private javax.swing.JTextField l2;
     private javax.swing.JComboBox l4;
-    private javax.swing.JPanel options;
     private javax.swing.JPanel options1;
     private javax.swing.JLabel price;
     private javax.swing.JTextField set2;

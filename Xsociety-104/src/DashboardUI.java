@@ -17,7 +17,9 @@ public class DashboardUI extends javax.swing.JFrame {
     /**
      * Creates new form DashboardUI
      */
-    public DashboardUI() {
+    private DisplayManager HeadMgr;
+    public DashboardUI(DisplayManager ob) {
+        HeadMgr = ob;
         initComponents();
         this.setTitle("DashboardUI - Kaustav Saha 104");
         this.setLocation(100,100);
@@ -219,7 +221,7 @@ public class DashboardUI extends javax.swing.JFrame {
             .addGroup(BaseUILayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(BaseUILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +262,7 @@ public class DashboardUI extends javax.swing.JFrame {
     private void HomeB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB1MouseClicked
         // TODO add your handling code here:
         this.dispose();
-        new SearchUI().setVisible(true);
+        HeadMgr.dispSearchUI();
         
     }//GEN-LAST:event_HomeB1MouseClicked
 
@@ -307,7 +309,7 @@ public class DashboardUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardUI().setVisible(true);
+                new DashboardUI(null).setVisible(true);
             }
         });
     }

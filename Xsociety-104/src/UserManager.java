@@ -92,6 +92,6 @@ public class UserManager {
         assert z != null;
         System.out.println(z.toString());
         */
-        new register().setVisible(true);
+        
      }
 }
