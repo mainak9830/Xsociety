@@ -98,6 +98,7 @@ public class EStoreUI extends javax.swing.JFrame {
         sellBookBtn = new javax.swing.JButton();
         sellEqpBtn = new javax.swing.JButton();
         UIDLabel = new javax.swing.JLabel();
+        ReceiptHash = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,6 +199,7 @@ public class EStoreUI extends javax.swing.JFrame {
 
         buyB.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         buyB.setText("BUY");
+        buyB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buyB.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buyBMouseClicked(evt);
@@ -250,6 +252,8 @@ public class EStoreUI extends javax.swing.JFrame {
 
         UIDLabel.setFont(new java.awt.Font("Lucida Console", 0, 18)); // NOI18N
 
+        ReceiptHash.setFont(new java.awt.Font("Century Schoolbook", 1, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -258,8 +262,8 @@ public class EStoreUI extends javax.swing.JFrame {
                 .addComponent(options, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(buyB)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(buyB, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(sellBookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -281,7 +285,8 @@ public class EStoreUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
-                                .addComponent(searchX)))))
+                                .addComponent(searchX))))
+                    .addComponent(ReceiptHash, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -304,14 +309,15 @@ public class EStoreUI extends javax.swing.JFrame {
                     .addComponent(itemTypecb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchX, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ReceiptHash, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(buyB)
-                        .addComponent(sellBookBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(listMsg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(sellEqpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sellEqpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(sellBookBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buyB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -383,12 +389,18 @@ public class EStoreUI extends javax.swing.JFrame {
         int sr = jTable1.getSelectedRow();
         if(sr!=-1){
             if(itemTypecb.getSelectedIndex()==0){
-                SM.buyBook((lst.get(sr)).split(",")[4]);
+                Book boughtB = SM.buyBook((lst.get(sr)).split(",")[4]);
+                //TM = new TransactionManager(currentUser,UM.searchUser((lst.get(sr)).split(",")[4]) , boughtB);
+                //String hash = TM.generateReceipt();
+                //ReceiptHash.setText("Recipt Hash(Check Desktop)="+hash);
                 //System.out.println((lst.get(sr)).split(",")[4]);
             }
             else{ //for itemTypecb.getSelectedIndex()==1
-                SM.buyEquipment((lst.get(sr)).split(",")[4]);
-            System.out.println((lst.get(sr)).split(",")[4]);
+                Equipment boughtE = SM.buyEquipment((lst.get(sr)).split(",")[4]);
+                //TM = new TransactionManager(currentUser,UM.searchUser((lst.get(sr)).split(",")[4]) , boughtE);
+                //String hash = TM.generateReceipt();
+                //ReceiptHash.setText("Recipt Hash(Check Desktop)="+hash);
+                //System.out.println((lst.get(sr)).split(",")[4]);
             }
         }
         else{
@@ -452,6 +464,7 @@ public class EStoreUI extends javax.swing.JFrame {
     private javax.swing.JButton HomeB2;
     private javax.swing.JButton HomeB3;
     private javax.swing.JButton HomeB4;
+    private javax.swing.JLabel ReceiptHash;
     private javax.swing.JLabel UIDLabel;
     private javax.swing.JButton buyB;
     private javax.swing.JComboBox itemTypecb;

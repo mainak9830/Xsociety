@@ -117,17 +117,15 @@ public class StoreManager {
         int sz = booklist.size();
         try{    
            FileWriter fw=new FileWriter("Bookstock.csv");    
-           fw.write("SUBJECT CODE,ITEM NAME,PRICE,AUTHOR,SELLER ID");
-           
+           fw.write("SUBJECT CODE,ITEM NAME,PRICE,AUTHOR,SELLER ID");           
            Book r = booklist.get(index);
            for(int i = 0;i<sz-1;i++){
                if(i!=index){
                    Book b = booklist.get(i);
                    fw.write("\n"+b.getSubj()+","+b.getItemName()+","+Float.toString(b.getPrice())+","+b.getAuthor()+","+Integer.toString(b.getSellerID()));
                }
-           }
-           
-           fw.close(); 
+           }           
+           fw.close();
            return r; 
           }catch(Exception e){System.out.println(e);}
         return null;
