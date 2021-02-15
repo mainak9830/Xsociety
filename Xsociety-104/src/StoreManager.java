@@ -85,6 +85,7 @@ public class StoreManager {
     }
     public ArrayList<String> getList(String st,int ch){ //use same function to generate buying list filtered according to subject code
         System.out.println(st+" "+ch);
+        st=st.trim();//delete space after search string
         ArrayList<String> list = new ArrayList<String>();
         if(ch==0){
             for(Book i:booklist){
@@ -103,15 +104,14 @@ public class StoreManager {
                     list.add(i.toString());
                 }//end of inner if
             }//end of for
-        }
-        
+        }        
         return list;
     }
-    public Book buyBook(String suid){
+    public Book buyBook(String suid,String ItmName){
         int index = -1;
         for(int i = 0;i<booklist.size();i++){
             Book x = booklist.get(i);
-            if(Integer.toString(x.getSellerID()).compareTo(suid)==0)
+            if((Integer.toString(x.getSellerID()).compareTo(suid)==0)&&(ItmName.compareTo(x.getItemName())==0))
                 index = i;
         }
         int sz = booklist.size();
@@ -130,11 +130,11 @@ public class StoreManager {
           }catch(Exception e){System.out.println(e);}
         return null;
     }
-    public Equipment buyEquipment(String suid){
+    public Equipment buyEquipment(String suid,String ItmName){
         int index = -1;
         for(int i = 0;i<eqtlist.size();i++){
             Equipment x = eqtlist.get(i);
-            if(Integer.toString(x.getSellerID()).compareTo(suid)==0)
+            if((Integer.toString(x.getSellerID()).compareTo(suid)==0)&&(ItmName.compareTo(x.getItemName())==0))
                 index = i;
         }
         int sz = eqtlist.size();

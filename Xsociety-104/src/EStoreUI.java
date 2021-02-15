@@ -366,7 +366,7 @@ public class EStoreUI extends javax.swing.JFrame {
             int ch = itemTypecb.getSelectedIndex();
             lst.clear();
             lst = SM.getList(tx, ch);
-            System.out.println("SIZE"+lst.size());
+            System.out.println("SIZE "+lst.size());
             for(String i:lst){
                 System.out.println(i.split(",")[0]);
                 String data[]={i.split(",")[1],i.split(",")[3]};
@@ -389,14 +389,14 @@ public class EStoreUI extends javax.swing.JFrame {
         int sr = jTable1.getSelectedRow();
         if(sr!=-1){
             if(itemTypecb.getSelectedIndex()==0){
-                Book boughtB = SM.buyBook((lst.get(sr)).split(",")[4]);
+                Book boughtB = SM.buyBook((lst.get(sr).split(",")[4]),(lst.get(sr).split(",")[1]));
                 //TM = new TransactionManager(currentUser,UM.searchUser((lst.get(sr)).split(",")[4]) , boughtB);
                 //String hash = TM.generateReceipt();
                 //ReceiptHash.setText("Recipt Hash(Check Desktop)="+hash);
                 //System.out.println((lst.get(sr)).split(",")[4]);
             }
             else{ //for itemTypecb.getSelectedIndex()==1
-                Equipment boughtE = SM.buyEquipment((lst.get(sr)).split(",")[4]);
+                Equipment boughtE = SM.buyEquipment((lst.get(sr).split(",")[4]),(lst.get(sr).split(",")[1]));
                 //TM = new TransactionManager(currentUser,UM.searchUser((lst.get(sr)).split(",")[4]) , boughtE);
                 //String hash = TM.generateReceipt();
                 //ReceiptHash.setText("Recipt Hash(Check Desktop)="+hash);
