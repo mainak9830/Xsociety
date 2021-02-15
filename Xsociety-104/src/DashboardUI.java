@@ -24,7 +24,8 @@ public class DashboardUI extends javax.swing.JFrame {
         this.setTitle("DashboardUI - Kaustav Saha 104");
         this.setLocation(100,100);
         upB.setBackground(new Color(252,208,92));
-        JButton [] btns = { HomeB,HomeB1,HomeB2,HomeB3,HomeB4};
+        HomeB.setBackground(new Color(255,153,51));
+        JButton [] btns = { HomeB1,HomeB2,HomeB3,HomeB4};
         for (JButton btn : btns){
             btn.setBackground(new Color(7,95,99));
             btn.setUI(new BasicButtonUI());
@@ -310,6 +311,7 @@ public class DashboardUI extends javax.swing.JFrame {
 
     private void HomeB3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB3MouseClicked
         // TODO add your handling code here:
+        this.dispose();
         HeadMgr.dispSettingsUI();
     }//GEN-LAST:event_HomeB3MouseClicked
     public void setUID(){

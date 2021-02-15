@@ -4,7 +4,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 /*
@@ -28,7 +31,8 @@ public class SettingsUI extends javax.swing.JFrame {
         initComponents();
         this.setTitle("DashboardUI - Kaustav Saha 104");
         this.setLocation(100,100);
-        JButton [] btns = { HomeB5,HomeB6,HomeB7,HomeB8,HomeB9};
+        HomeB8.setBackground(new Color(255,153,51));
+        JButton [] btns = { HomeB5,HomeB6,HomeB7,HomeB9};
         for (JButton btn : btns){
             btn.setBackground(new Color(7,95,99));
             btn.setUI(new BasicButtonUI());
@@ -98,6 +102,11 @@ public class SettingsUI extends javax.swing.JFrame {
         HomeB5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/open-menu.png"))); // NOI18N
         HomeB5.setBorder(null);
         HomeB5.setPreferredSize(new java.awt.Dimension(50, 50));
+        HomeB5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB5MouseClicked(evt);
+            }
+        });
 
         HomeB6.setBackground(new java.awt.Color(7, 95, 99));
         HomeB6.setForeground(new java.awt.Color(7, 95, 99));
@@ -200,6 +209,11 @@ public class SettingsUI extends javax.swing.JFrame {
         submitBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         submitBtn.setText("SUBMIT");
         submitBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        submitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                submitBtnMouseClicked(evt);
+            }
+        });
 
         reportBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         reportBtn.setText("REPORT");
@@ -315,6 +329,7 @@ public class SettingsUI extends javax.swing.JFrame {
 
     private void reportUIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportUIDMouseClicked
         // TODO add your handling code here:
+        reportUID.setBackground(Color.WHITE);
         reportUID.setText("");
     }//GEN-LAST:event_reportUIDMouseClicked
 
@@ -325,20 +340,54 @@ public class SettingsUI extends javax.swing.JFrame {
                                   "Uploading unreliable links",
                                    "Uploaded copyrighted works without permission",
                                    "Other reasons (Write in Feedback)"};
-        if(reportUID.getText()==""){
+        if(reportUID.getText().compareTo("")==0){
             reportUID.setText("NO ID GIVEN!");
+            reportUID.setBackground(Color.RED);
         }
         else{
-            String reportUsr = "\n"+HeadMgr.getUser().getUniqueid()+","+reportUID.getText()+","+options[ReportCB.getSelectedIndex()];
-            try{
-            BufferedWriter out = new BufferedWriter(new FileWriter("Reports.csv", true));
-            out.write(reportUsr);
-            out.close(); 
-        }catch(Exception e){
-            System.err.println(e.getMessage());
-        }
+                String reportUsr = "\n"+HeadMgr.getUser().getUniqueid()+","+reportUID.getText()+","+options[ReportCB.getSelectedIndex()];
+                try{
+                BufferedWriter out = new BufferedWriter(new FileWriter("Reports.csv", true));
+                out.write(reportUsr);
+                out.close();
+                JOptionPane.showMessageDialog(null,"Thanks for your report.We will look into it.","SUCCESS",JOptionPane.NO_OPTION);
+                reportUID.setText("");
+            }catch(Exception e){
+                System.err.println(e.getMessage());
+            }
         }
     }//GEN-LAST:event_reportBtnMouseClicked
+
+    private void HomeB5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB5MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        HeadMgr.dispDashboardUI();
+    }//GEN-LAST:event_HomeB5MouseClicked
+
+    private void submitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_submitBtnMouseClicked
+        // TODO add your handling code here:
+        String F = feedbackTX.getText();
+        String patt1="^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$";
+        Pattern p1 = Pattern.compile(patt1);
+        Matcher m=p1.matcher(F);
+        if(!m.matches()){
+            JOptionPane.showMessageDialog(null,"Only Alphanumerics allowed!","ERROR!",JOptionPane.ERROR_MESSAGE);
+        }
+        else if(F.compareTo("")==0){
+            JOptionPane.showMessageDialog(null,"No Feedback given!","ERROR!",JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            try{
+                BufferedWriter out = new BufferedWriter(new FileWriter("Feedbacks.txt", true));
+                out.write("\n"+HeadMgr.getUser().getUniqueid()+" - "+ F);
+                out.close();
+                JOptionPane.showMessageDialog(null,"Thanks for your feedback!","SUCCESS",JOptionPane.NO_OPTION);
+                feedbackTX.setText("");
+            }catch(Exception e){
+                System.err.println(e.getMessage());
+            }
+        }
+    }//GEN-LAST:event_submitBtnMouseClicked
 
     /**
      * @param args the command line arguments

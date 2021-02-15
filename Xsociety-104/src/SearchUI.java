@@ -29,7 +29,8 @@ public class SearchUI extends javax.swing.JFrame {
         initComponents();
         this.setLocation(100,100);
         this.setTitle("EStoreUI - Kaustav Saha 104");
-        JButton [] btns = { HomeB5,HomeB6,HomeB7,HomeB8,HomeB9};
+        HomeB6.setBackground(new Color(255,153,51));
+        JButton [] btns = { HomeB5,HomeB7,HomeB8,HomeB9};
         for (JButton btn : btns){
             btn.setBackground(new Color(7,95,99));
             btn.setUI(new BasicButtonUI());
@@ -410,7 +411,8 @@ public class SearchUI extends javax.swing.JFrame {
         //new EStoreUI().setVisible(true);
     }     
     private void HomeB8MouseClicked(java.awt.event.MouseEvent evt) { 
-        System.exit(0);
+        this.dispose();
+        HeadMgr.dispSettingsUI();
     }
     
     /**
