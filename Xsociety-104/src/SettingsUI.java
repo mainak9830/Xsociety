@@ -2,6 +2,8 @@
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import javax.swing.JButton;
 import javax.swing.plaf.basic.BasicButtonUI;
 
@@ -26,7 +28,7 @@ public class SettingsUI extends javax.swing.JFrame {
         initComponents();
         this.setTitle("DashboardUI - Kaustav Saha 104");
         this.setLocation(100,100);
-        JButton [] btns = { HomeB,HomeB1,HomeB2,HomeB3,HomeB4};
+        JButton [] btns = { HomeB5,HomeB6,HomeB7,HomeB8,HomeB9};
         for (JButton btn : btns){
             btn.setBackground(new Color(7,95,99));
             btn.setUI(new BasicButtonUI());
@@ -75,6 +77,15 @@ public class SettingsUI extends javax.swing.JFrame {
         HomeB9 = new javax.swing.JButton();
         UIDLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        ReportCB = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
+        reportUID = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        feedbackTX = new javax.swing.JTextArea();
+        submitBtn = new javax.swing.JButton();
+        reportBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,17 +173,78 @@ public class SettingsUI extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Franklin Gothic Heavy", 0, 50)); // NOI18N
         jLabel1.setText("SETTINGS");
 
+        ReportCB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ReportCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Using someone else's UniqueID", "Uploading unrelated content in E-Store", "Uploading unreliable links", "Uploaded copyrighted works without permission", "Other reasons (Write in Feedback)" }));
+        ReportCB.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel2.setText("REPORT USER");
+
+        reportUID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        reportUID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportUIDMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel3.setText("User ID");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setText("FEEDBACK");
+
+        feedbackTX.setColumns(20);
+        feedbackTX.setRows(5);
+        jScrollPane1.setViewportView(feedbackTX);
+
+        submitBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        submitBtn.setText("SUBMIT");
+        submitBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        reportBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        reportBtn.setText("REPORT");
+        reportBtn.setToolTipText("");
+        reportBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        reportBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportBtnMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(options1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jLabel1)
-                .addGap(18, 392, Short.MAX_VALUE)
-                .addComponent(UIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 392, Short.MAX_VALUE)
+                                .addComponent(UIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jLabel4))
+                                        .addGap(43, 43, 43)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(reportUID, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(ReportCB, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(497, 497, 497)
+                        .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,7 +257,27 @@ public class SettingsUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(UIDLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ReportCB, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(reportUID))
+                        .addGap(125, 125, 125)
+                        .addComponent(jLabel4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,6 +292,7 @@ public class SettingsUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void HomeB6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB6MouseClicked
@@ -219,6 +312,33 @@ public class SettingsUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_HomeB9MouseClicked
+
+    private void reportUIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportUIDMouseClicked
+        // TODO add your handling code here:
+        reportUID.setText("");
+    }//GEN-LAST:event_reportUIDMouseClicked
+
+    private void reportBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportBtnMouseClicked
+        // TODO add your handling code here:
+        String options[]={"Using someone else's UniqueID",
+                                  "Uploading unrelated content in E-Store",
+                                  "Uploading unreliable links",
+                                   "Uploaded copyrighted works without permission",
+                                   "Other reasons (Write in Feedback)"};
+        if(reportUID.getText()==""){
+            reportUID.setText("NO ID GIVEN!");
+        }
+        else{
+            String reportUsr = "\n"+HeadMgr.getUser().getUniqueid()+","+reportUID.getText()+","+options[ReportCB.getSelectedIndex()];
+            try{
+            BufferedWriter out = new BufferedWriter(new FileWriter("Reports.csv", true));
+            out.write(reportUsr);
+            out.close(); 
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+        }
+    }//GEN-LAST:event_reportBtnMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,20 +376,23 @@ public class SettingsUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton HomeB;
-    private javax.swing.JButton HomeB1;
-    private javax.swing.JButton HomeB2;
-    private javax.swing.JButton HomeB3;
-    private javax.swing.JButton HomeB4;
     private javax.swing.JButton HomeB5;
     private javax.swing.JButton HomeB6;
     private javax.swing.JButton HomeB7;
     private javax.swing.JButton HomeB8;
     private javax.swing.JButton HomeB9;
+    private javax.swing.JComboBox ReportCB;
     private javax.swing.JLabel UIDLabel;
+    private javax.swing.JTextArea feedbackTX;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel options;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel options1;
+    private javax.swing.JButton reportBtn;
+    private javax.swing.JTextField reportUID;
+    private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables
 }

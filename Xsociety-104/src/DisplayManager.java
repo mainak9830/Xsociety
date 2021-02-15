@@ -19,6 +19,7 @@ public class DisplayManager {
     private EStoreUI estoreScreen;
     private SellBookUI sellbookScreen;
     private SellEquipmentUI selleqpScreen;
+    private SettingsUI settingScreen;
     
     private User current_user; //store details of currently logged in User
     
@@ -39,6 +40,7 @@ public class DisplayManager {
         estoreScreen.setVisible(false);
         sellbookScreen.setVisible(false);
         selleqpScreen.setVisible(false);
+        settingScreen.setVisible(false);
     }
     public void setUser(User X){//X is currently logged in User extracted from Log In page
         this.current_user = X;
@@ -72,8 +74,8 @@ public class DisplayManager {
     public void dispSellEquipmentUI(){
         selleqpScreen.setVisible(true);
     }
-    public void SettingsUI(){
-        
+    public void dispSettingsUI(){
+        settingScreen.setVisible(true);
     }
     
     public static void main(String args[]){
@@ -86,6 +88,7 @@ public class DisplayManager {
         startMG.uploadScreen=new uploadUI(startMG,startMG.NM);
         startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM);
         startMG.selleqpScreen=new SellEquipmentUI(startMG,startMG.SM);
+        startMG.settingScreen = new SettingsUI(startMG);
         startMG.dispLoginUI();
     }
     //Test case : UID - 8888 , pwd - 88888888

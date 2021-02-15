@@ -290,8 +290,9 @@ public class SearchUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
+        
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void jBsearchMouseClicked(java.awt.event.MouseEvent evt) {                                      

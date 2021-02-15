@@ -390,6 +390,8 @@ public class EStoreUI extends javax.swing.JFrame {
         if(sr!=-1){
             if(itemTypecb.getSelectedIndex()==0){
                 Book boughtB = SM.buyBook((lst.get(sr).split(",")[4]),(lst.get(sr).split(",")[1]));
+                if(boughtB!=null)
+                    ReceiptHash.setText("Transaction successful");
                 //TM = new TransactionManager(currentUser,UM.searchUser((lst.get(sr)).split(",")[4]) , boughtB);
                 //String hash = TM.generateReceipt();
                 //ReceiptHash.setText("Recipt Hash(Check Desktop)="+hash);
@@ -397,6 +399,8 @@ public class EStoreUI extends javax.swing.JFrame {
             }
             else{ //for itemTypecb.getSelectedIndex()==1
                 Equipment boughtE = SM.buyEquipment((lst.get(sr).split(",")[4]),(lst.get(sr).split(",")[1]));
+                if(boughtE!=null)
+                    ReceiptHash.setText("Transaction successful");
                 //TM = new TransactionManager(currentUser,UM.searchUser((lst.get(sr)).split(",")[4]) , boughtE);
                 //String hash = TM.generateReceipt();
                 //ReceiptHash.setText("Recipt Hash(Check Desktop)="+hash);
