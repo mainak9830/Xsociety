@@ -358,7 +358,7 @@ public class SearchUI extends javax.swing.JFrame {
     
     private void HomeB9MouseClicked(java.awt.event.MouseEvent evt) {                                    
         // TODO add your handling code here:
-        System.exit(0);
+        HeadMgr.ExitApp();
     }                                   
 
     private void DownloadBMouseClicked(java.awt.event.MouseEvent evt) {                                       

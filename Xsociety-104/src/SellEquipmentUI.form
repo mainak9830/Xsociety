@@ -254,6 +254,9 @@
                   <Dimension value="[90, 90]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="HomeB8MouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="HomeB9">
               <Properties>

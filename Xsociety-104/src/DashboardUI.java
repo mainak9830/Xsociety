@@ -286,7 +286,7 @@ public class DashboardUI extends javax.swing.JFrame {
 
     private void HomeB4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB4MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        HeadMgr.ExitApp();
     }//GEN-LAST:event_HomeB4MouseClicked
 
     private void HomeB1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB1MouseClicked

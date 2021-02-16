@@ -139,6 +139,11 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         HomeB8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cog.png"))); // NOI18N
         HomeB8.setBorder(null);
         HomeB8.setPreferredSize(new java.awt.Dimension(90, 90));
+        HomeB8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB8MouseClicked(evt);
+            }
+        });
 
         HomeB9.setBackground(new java.awt.Color(7, 95, 99));
         HomeB9.setForeground(new java.awt.Color(7, 95, 99));
@@ -323,7 +328,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
 
     private void HomeB9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB9MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        HeadMgr.ExitApp();
     }//GEN-LAST:event_HomeB9MouseClicked
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
@@ -387,6 +392,12 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         this.dispose();
         HeadMgr.dispDashboardUI();
     }//GEN-LAST:event_HomeB5MouseClicked
+
+    private void HomeB8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB8MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+        HeadMgr.dispSettingsUI();
+    }//GEN-LAST:event_HomeB8MouseClicked
 
     /**
      * @param args the command line arguments
