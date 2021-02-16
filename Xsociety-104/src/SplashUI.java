@@ -115,7 +115,7 @@ public class SplashUI extends javax.swing.JFrame {
         try{
             
         for(int i=0;i<=100;i++){
-            Thread.sleep(25);
+            Thread.sleep(50);
             this.bar.setValue(i);
             if(i==0)
                 msgLabel.setText("Powering up...");
@@ -125,6 +125,9 @@ public class SplashUI extends javax.swing.JFrame {
                 msgLabel.setText("Checking file systems...");
             if(i==80)
                 msgLabel.setText("And here we go...");
+            if(i>=20 && i<=80){
+                i+=(int)(Math.random()*5);
+            }
         }
         this.dispose();
         return 1;
