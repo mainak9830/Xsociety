@@ -22,7 +22,6 @@ public class DashboardUI extends javax.swing.JFrame {
         HeadMgr = ob;
         initComponents();
         this.setTitle("DashboardUI - Kaustav Saha 104");
-        this.setLocation(100,100);
         upB.setBackground(new Color(252,208,92));
         HomeB.setBackground(new Color(255,153,51));
         JButton [] btns = { HomeB1,HomeB2,HomeB3,HomeB4};

@@ -5,6 +5,8 @@
  */
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -27,7 +29,6 @@ public class SearchUI extends javax.swing.JFrame {
         HeadMgr = ob;
         NM = ob1;
         initComponents();
-        this.setLocation(100,100);
         this.setTitle("EStoreUI - Kaustav Saha 104");
         HomeB6.setBackground(new Color(255,153,51));
         JButton [] btns = { HomeB5,HomeB7,HomeB8,HomeB9};

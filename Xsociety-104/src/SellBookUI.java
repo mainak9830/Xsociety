@@ -13,6 +13,8 @@
  * Team-Xsociety
  */
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.regex.Pattern;
@@ -30,7 +32,10 @@ public class SellBookUI extends javax.swing.JFrame {
         SM = ob1;
         initComponents();
         this.setTitle("SellBookUI - Mainak Adak 97");
-        this.setLocation(100,100);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int height = screenSize.height;
+        int width = screenSize.width;
+        this.setSize(width/2, height/2);
         JButton [] btns = { HomeB,HomeB1,HomeB2,HomeB3,HomeB4};
         for (JButton btn : btns){
             btn.setBackground(new Color(7,95,99));
@@ -458,9 +463,11 @@ public class SellBookUI extends javax.swing.JFrame {
         HeadMgr.dispDashboardUI();
     }
     private void HomeB1MouseClicked(java.awt.event.MouseEvent evt) { 
+        this.dispose();
         HeadMgr.dispSearchUI();
     }
     private void HomeB2MouseClicked(java.awt.event.MouseEvent evt) { 
+        this.dispose();
         HeadMgr.dispEStoreUI();
     }
     

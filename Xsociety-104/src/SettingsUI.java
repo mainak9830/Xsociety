@@ -30,7 +30,6 @@ public class SettingsUI extends javax.swing.JFrame {
         HeadMgr = ob;
         initComponents();
         this.setTitle("DashboardUI - Kaustav Saha 104");
-        this.setLocation(100,100);
         HomeB8.setBackground(new Color(255,153,51));
         JButton [] btns = { HomeB5,HomeB6,HomeB7,HomeB9};
         for (JButton btn : btns){

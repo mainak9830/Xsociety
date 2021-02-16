@@ -37,7 +37,6 @@ public class EStoreUI extends javax.swing.JFrame {
         currentUser = ob3;
         initComponents();
         this.setTitle("EStoreUI - Kaustav Saha 104");
-        this.setLocation(100,100);
         HomeB2.setBackground(new Color(255,153,51));
         JButton [] btns = { HomeB,HomeB1,HomeB3,HomeB4};
         for (JButton btn : btns){
