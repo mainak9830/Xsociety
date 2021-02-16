@@ -33,9 +33,8 @@ public class SellBookUI extends javax.swing.JFrame {
         initComponents();
         this.setTitle("SellBookUI - Mainak Adak 97");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int height = screenSize.height;
         int width = screenSize.width;
-        this.setSize(width/2, height/2);
+        this.setSize(width/2, 700);
         JButton [] btns = { HomeB,HomeB1,HomeB2,HomeB3,HomeB4};
         for (JButton btn : btns){
             btn.setBackground(new Color(7,95,99));
@@ -65,7 +64,7 @@ public class SellBookUI extends javax.swing.JFrame {
                    }
             } );
         }
-        
+        setLocationRelativeTo(null);
     }
 
     /**

@@ -63,7 +63,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         price.setVisible(false);
         set2.setVisible(false);
         confirm.setVisible(false);
-        
+        setLocationRelativeTo(null);
     }
 
     /**

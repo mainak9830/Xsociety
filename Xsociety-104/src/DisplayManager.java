@@ -98,7 +98,12 @@ public class DisplayManager {
         startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM);
         startMG.selleqpScreen=new SellEquipmentUI(startMG,startMG.SM);
         startMG.settingScreen = new SettingsUI(startMG);
-        startMG.dispLoginUI();
+        //startMG.dispLoginUI();
+        SplashUI splash = new SplashUI();
+        splash.setVisible(true);
+        if(splash.disp()==1){
+            startMG.dispLoginUI();
+        }
     }
     //Test case : UID - 8888 , pwd - 88888888
 }

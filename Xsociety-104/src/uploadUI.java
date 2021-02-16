@@ -67,6 +67,7 @@ public class uploadUI extends javax.swing.JFrame {
                    }
             } );
         }
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -433,7 +434,7 @@ public class uploadUI extends javax.swing.JFrame {
 
     private void HomeB9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB9MouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        HeadMgr.ExitApp();
     }//GEN-LAST:event_HomeB9MouseClicked
 
     private void HomeB5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HomeB5MouseClicked
