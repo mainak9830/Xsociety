@@ -143,6 +143,11 @@ public class SellBookUI extends javax.swing.JFrame {
         HomeB3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/cog.png"))); // NOI18N
         HomeB3.setBorder(null);
         HomeB3.setPreferredSize(new java.awt.Dimension(90, 90));
+        HomeB3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HomeB3MouseClicked(evt);
+            }           
+        });
 
         HomeB4.setBackground(new java.awt.Color(7, 95, 99));
         HomeB4.setForeground(new java.awt.Color(7, 95, 99));
@@ -468,6 +473,10 @@ public class SellBookUI extends javax.swing.JFrame {
     private void HomeB2MouseClicked(java.awt.event.MouseEvent evt) { 
         this.dispose();
         HeadMgr.dispEStoreUI();
+    }
+    private void HomeB3MouseClicked(java.awt.event.MouseEvent evt) { 
+        this.dispose();
+        HeadMgr.dispSettingsUI();
     }
     
     private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked

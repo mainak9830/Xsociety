@@ -11,9 +11,9 @@ import javax.swing.JOptionPane;
  * @author Kaustav
  */
 public class DisplayManager {
-    private UserManager UM;
-    private NotesManager NM;
-    private StoreManager SM;
+    private UserManager UM;//object of control class handling Users
+    private NotesManager NM;//object of control class handling Notes/Resources
+    private StoreManager SM;//object of control class handling buying-selling of books/equipments
     private LoginUI loginScreen;
     private RegisterUI registerScreen;
     private DashboardUI dashboardScreen;
@@ -34,6 +34,7 @@ public class DisplayManager {
         NM.init();
         SM.init();
     }
+    /**
     public void hideAll(){
         loginScreen.setVisible(false);
         registerScreen.setVisible(false);
@@ -45,10 +46,11 @@ public class DisplayManager {
         selleqpScreen.setVisible(false);
         settingScreen.setVisible(false);
     }
+    */
     public void setUser(User X){//X is currently logged in User extracted from Log In page
         this.current_user = X;
     }
-    public User getUser(){
+    public User getUser(){//return details of currently logged-in User
         return this.current_user;
     }
     public void dispLoginUI(){
@@ -99,11 +101,13 @@ public class DisplayManager {
         startMG.selleqpScreen=new SellEquipmentUI(startMG,startMG.SM);
         startMG.settingScreen = new SettingsUI(startMG);
         //startMG.dispLoginUI();
+        
         SplashUI splash = new SplashUI();
         splash.setVisible(true);
         if(splash.disp()==1){
             startMG.dispLoginUI();
         }
+        
     }
-    //Test case : UID - 8888 , pwd - 88888888
+    //Testing Account : UID - 8888 , pwd - 88888888
 }
