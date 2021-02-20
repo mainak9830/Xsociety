@@ -90,10 +90,10 @@ public class StoreManager {
         if(ch==0){
             for(Book i:booklist){
                 String h = i.getItemName().toLowerCase();
-                //System.out.println("check if "+h+" ="+st.toLowerCase());
                 if(h.lastIndexOf(st.toLowerCase())!=-1){
-                    //if(i.getSellerID()!=Integer.parseInt(current_user.getUniqueid()))
-                        list.add(i.toString());
+                        if(i.getSellerID()!=Integer.parseInt(current_user.getUniqueid())){
+                            list.add(i.toString());
+                        }
                 }//end of inner if
             }//end of for
         }
@@ -101,8 +101,9 @@ public class StoreManager {
             for(Equipment i:eqtlist){
                 String h = i.getItemName().toLowerCase();
                 if(h.lastIndexOf(st.toLowerCase())!=-1){
-                    //if(i.getSellerID()!=Integer.parseInt(current_user.getUniqueid()))
+                    if(i.getSellerID()!=Integer.parseInt(current_user.getUniqueid())){
                         list.add(i.toString());
+                    }
                 }//end of inner if
             }//end of for
         }        

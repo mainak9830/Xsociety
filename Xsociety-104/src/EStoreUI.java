@@ -374,7 +374,7 @@ public class EStoreUI extends javax.swing.JFrame {
             }
             int ch = itemTypecb.getSelectedIndex();
             lst.clear();
-            lst = SM.getList(tx, ch,currentUser);
+            lst = SM.getList(tx, ch,HeadMgr.getUser());
             System.out.println("SIZE "+lst.size());
             for(String i:lst){
                 System.out.println(i.split(",")[0]);
