@@ -13,18 +13,6 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 
 public class TransactionManager implements Serializable{
-
-	private String sellerID;
-	 private String buyerID;
-	 private String year_buyer;
-	 private String year_seller;
-	 private String department_seller;
-	 private String department_buyer;
-	 private String email_buyer;
-	 private String email_seller;
-	 float price;
-	 String labcode;
-	
 	String itemname;
 	String path;
 	String  desktopPath;
@@ -34,44 +22,9 @@ public class TransactionManager implements Serializable{
 		desktopPath = System.getProperty("user.home") + "/Desktop/";
 		  path=desktopPath.replace("\\", "/");
 	}
-	
-	TransactionManager (User buyer,User seller,Book it)
-	{ 
-		
-	    sellerID=seller.getUniqueid();
-	    buyerID=buyer.getUniqueid();
-                     price=it.getPrice();
-                     year_buyer=buyer.getYear();
-                     year_seller=seller.getYear();
-	    department_buyer=buyer.getDepartment();
-	    //assert(Pattern.matches("^[a-zA-Z]+",department_buyer)):"Invalid Department";
-	    //assert(Pattern.matches("^[a-zA-Z]+",department_seller)):"Invalid Department";
-                    itemname=it.getItemName();
-                    //assert(Pattern.matches("^[a-zA-Z]+",itemname)):"Invalid itemname";
-                    labcode=it.getSubj();
-                    email_seller=seller.getEmail();
-                    email_buyer=buyer.getEmail();                    		
-                 }
-                TransactionManager (User buyer,User seller,Equipment it)
-	{ 
-		
-	    sellerID=seller.getUniqueid();
-	    buyerID=buyer.getUniqueid();
-                     price=it.getPrice();
-                     year_buyer=buyer.getYear();
-                     year_seller=seller.getYear();
-	    department_buyer=buyer.getDepartment();
-	    //assert(Pattern.matches("^[a-zA-Z]+",department_buyer)):"Invalid Department";
-	    //assert(Pattern.matches("^[a-zA-Z]+",department_seller)):"Invalid Department";
-                    itemname=it.getItemName();
-                    //assert(Pattern.matches("^[a-zA-Z]+",itemname)):"Invalid itemname";
-                    labcode=it.getSubj();
-                    email_seller=seller.getEmail();
-                    email_buyer=buyer.getEmail();                    		
-                 }
-    public String generateReceipt(){
-        String hash_input=getMd5(sellerID+buyerID+itemname+" ");
-
+    public String generateReceipt(String buyerD,String sellerD,String ItemD){
+        String hash_input=(getMd5(buyerD.concat(sellerD))).substring(0,7);
+        System.out.println(hash_input);
                    Date obj=new Date();
                    String date=obj.toString(); 
                     try
@@ -85,20 +38,13 @@ public class TransactionManager implements Serializable{
                      fo.write(date+"\n\n");
 
                      fo.write("SELLER DETAILS\n");
-                     fo.write("Seller ID: "+sellerID+"\n");
-                     fo.write("Year of Enrollment : "+year_seller+"\n");
-                     fo.write("Department: "+department_seller+"\n");
-                     fo.write("Email: "+email_seller+"\n\n");
+                     fo.write(sellerD+"\n\n");
 
 
                      fo.write("BUYER DETAILS\n");
-                     fo.write("Buyer ID: "+buyerID+"\n");
-                     fo.write("Year of Enrollment : "+year_buyer+"\n");
-                     fo.write("Department: "+department_buyer+"\n");
-                     fo.write("Email "+email_buyer+"\n\n");
+                     fo.write(buyerD+"\n\n");
 
-                     fo.write("Itemname: "+itemname+"\n");
-                     fo.write("Price: "+price+"\n");
+                     fo.write(ItemD+"\n");
                      fo.write("Unique transaction code: "+hash_input+"\n");
 
                      fo.close();		  
@@ -137,6 +83,13 @@ public class TransactionManager implements Serializable{
 		//User sell=new User("Manju",456);
 		Item i=new Item("LabCoat","PCC-CS501",774.0f,4456);
 		User sell=new User("4456","hello123","2nd","Computer Science","maitriroy122@gmail.com","7890267119");
-		//TransactionManager s=new TransactionManager(buy,sell,i);
+                                  Book b1 = new Book("ESC501","book1",500.0f,"DK",2000);
+                                  Equipment e1 = new Equipment("ESC501","eqp1", 300.0f, "www.bing.com",3000);
+		TransactionManager s1=new TransactionManager();
+                                  TransactionManager s2=new TransactionManager();
+                                  //s1.init(buy,sell,b1);
+                                  //s2.init(buy,sell, e1);
+                                  //s1.generateReceipt();
+                                  //s2.generateReceipt();
 	}
 }

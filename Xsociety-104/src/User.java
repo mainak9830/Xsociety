@@ -50,6 +50,9 @@ public String getContactno(){
     public String toString(){
     return this.uniqueid+" "+this.password+" "+this.year+" "+this.department+" "+this.email+" "+this.contactno;
 }
+    public String toDetails(){
+        return ("UNIQUE ID = "+this.uniqueid+"\n"+"YEAR - "+this.year+" DEPT - "+this.department+"\nEMAIL ID - "+this.email+"\nCONTACT NO. -  "+this.contactno);
+    }
      public void hash() 
     { 
         String input = this.password;

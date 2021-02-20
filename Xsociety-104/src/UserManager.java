@@ -64,7 +64,7 @@ public class UserManager {
         User x = searchUser(uid);
         //System.out.println(x.toString());
         if(x != null){
-            System.out.println("Check if "+x.getPassword()+" = "+pwd);
+            //System.out.println("Check if "+x.getPassword()+" = "+pwd);
             if(x.getPassword().compareTo(x.hash1(pwd))==0){
                 return x;
             }

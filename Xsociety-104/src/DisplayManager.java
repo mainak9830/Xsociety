@@ -14,6 +14,7 @@ public class DisplayManager {
     private UserManager UM;//object of control class handling Users
     private NotesManager NM;//object of control class handling Notes/Resources
     private StoreManager SM;//object of control class handling buying-selling of books/equipments
+    private TransactionManager TM;
     private LoginUI loginScreen;
     private RegisterUI registerScreen;
     private DashboardUI dashboardScreen;
@@ -30,6 +31,7 @@ public class DisplayManager {
         UM = new UserManager();
         NM = new NotesManager();
         SM = new StoreManager();
+        TM = new TransactionManager();
         UM.init();
         NM.init();
         SM.init();
@@ -95,7 +97,7 @@ public class DisplayManager {
         startMG.registerScreen=new RegisterUI(startMG,startMG.UM);
         startMG.dashboardScreen = new DashboardUI(startMG);
         startMG.searchScreen=new SearchUI(startMG,startMG.NM);
-        startMG.estoreScreen=new EStoreUI(startMG,startMG.SM,startMG.UM,startMG.current_user);
+        startMG.estoreScreen=new EStoreUI(startMG,startMG.SM,startMG.UM,startMG.current_user,startMG.TM);
         startMG.uploadScreen=new uploadUI(startMG,startMG.NM);
         startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM);
         startMG.selleqpScreen=new SellEquipmentUI(startMG,startMG.SM);

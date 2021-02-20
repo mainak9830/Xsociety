@@ -10,4 +10,7 @@ public class Equipment extends Item{
     public String toString(){
         return (super.getSubj()+","+super.getItemName()+","+this.link+","+super.getPrice()+","+super.getSellerID());
     }
+    public String toDetails(){
+        return ("ITEM NAME - "+super.getItemName()+"LINK - "+this.link+"\nPRICE - "+super.getPrice());
+    }
 }

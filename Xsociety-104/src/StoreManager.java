@@ -83,7 +83,7 @@ public class StoreManager {
             return false;
         }
     }
-    public ArrayList<String> getList(String st,int ch){ //use same function to generate buying list filtered according to subject code
+    public ArrayList<String> getList(String st,int ch,User current_user){ //use same function to generate buying list filtered according to subject code
         System.out.println(st+" "+ch);
         st=st.trim();//delete space after search string
         ArrayList<String> list = new ArrayList<String>();
@@ -92,8 +92,8 @@ public class StoreManager {
                 String h = i.getItemName().toLowerCase();
                 //System.out.println("check if "+h+" ="+st.toLowerCase());
                 if(h.lastIndexOf(st.toLowerCase())!=-1){
-                    
-                    list.add(i.toString());
+                    //if(i.getSellerID()!=Integer.parseInt(current_user.getUniqueid()))
+                        list.add(i.toString());
                 }//end of inner if
             }//end of for
         }
@@ -101,7 +101,8 @@ public class StoreManager {
             for(Equipment i:eqtlist){
                 String h = i.getItemName().toLowerCase();
                 if(h.lastIndexOf(st.toLowerCase())!=-1){
-                    list.add(i.toString());
+                    //if(i.getSellerID()!=Integer.parseInt(current_user.getUniqueid()))
+                        list.add(i.toString());
                 }//end of inner if
             }//end of for
         }        

@@ -11,4 +11,7 @@ public class Book extends Item{
     public String toString(){
         return (super.getSubj()+","+super.getItemName()+","+this.author+","+super.getPrice()+","+super.getSellerID());
     }
+    public String toDetails(){
+        return ("ITEM NAME - "+super.getItemName()+"\nAUTHOR - "+this.author+"\nPRICE - "+super.getPrice());
+    }
 }

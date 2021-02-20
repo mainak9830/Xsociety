@@ -67,8 +67,8 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        deptCB = new javax.swing.JComboBox<String>();
-        yearCB = new javax.swing.JComboBox<String>();
+        deptCB = new javax.swing.JComboBox<>();
+        yearCB = new javax.swing.JComboBox<>();
         jLabel18 = new javax.swing.JLabel();
         rulesBtn = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
@@ -250,12 +250,12 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel17.setBounds(722, 157, 161, 0);
 
         deptCB.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        deptCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "CSE", "ECE", "IT", "ME", "EEE", "EE" }));
+        deptCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CSE", "ECE", "IT", "ME", "EEE", "EE" }));
         jPanel1.add(deptCB);
         deptCB.setBounds(620, 100, 75, 28);
 
         yearCB.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        yearCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1st", "2nd", "3rd", "4th" }));
+        yearCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1st", "2nd", "3rd", "4th" }));
         jPanel1.add(yearCB);
         yearCB.setBounds(800, 100, 80, 28);
 

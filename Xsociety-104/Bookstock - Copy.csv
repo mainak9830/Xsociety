@@ -1,6 +1,11 @@
 SUBJECT CODE,ITEM NAME,PRICE,AUTHOR,SELLER ID
-ESC501,Fundamentals of Software Engineering,123.67,Rajib Mall,1111
 ESC501,An Integral Approach to Software Engineering,345.78,Pankaj Jalote,2222
 ESC501,Software Engineering International Edition,434.56,Ian Sommerville,3333
 ESC501,Software Engineering 3rd edition,345.78,K K Aggarwal,4444
-CS501,Principles of Compiler Design,566.89,Aho and Ullman,5555
+ESC501,Software engineering,324.8,Rajib Mall,5555
+CS501,Principles of Compiler Design,290.0,Ullman and Aho,3652
+CS501,Compiler Design in C,543.0,Holub,1112
+CS501,Introduction to compilers and Language Design,600.0,Douglas Thain,3695
+CS502,Operating system A design oriented approach,600.0,Charles Crowley,1234
+CS503,Object Oriented Analysis and Design,700.88,Grady Booch,5678
+CS503,Head First Object Oriented Analysis and Design,450.0,OReillys,1689
