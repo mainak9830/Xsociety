@@ -5,10 +5,10 @@ IEM 3rd year(2018-2022) batch OOP project
 [Wiki page](http://103.127.146.165/wiki/index.php?title=Xsociety:Main)
 
 ## Team Members:
-- Kaustav Saha [Team Lead]
-- Mainak Adak [Developer 1]
-- Deep Roy [Developer 2]
-- Maitri Roy [QA Manager]
+- Kaustav Saha [Project Manager]
+- Mainak Adak [Developer 1][QA Engineer]
+- Deep Roy [Developer 2][Tester]
+- Maitri Roy [Developer 3]
 
 ## Task List:
 - [x] Entity + Control Classes, Unit Tests :open_file_folder:
