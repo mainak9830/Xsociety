@@ -11,7 +11,7 @@ IEM 3rd year(2018-2022) batch OOP project
 - Maitri Roy [QA Manager]
 
 ## Task List:
-- [x] Entity + Control CLasses, Unit Tests :open_file_folder:
+- [x] Entity + Control Classes, Unit Tests :open_file_folder:
 - [x] Entity + Control, integrated with Boundary/Swing Classes :link:
 - [x] Integration of all use cases :nut_and_bolt:
 - [ ] System Testing :wrench:
