@@ -150,7 +150,7 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
         // TODO add your handling code here:
-        if(UID.getText()=="" && PWD.getText()==""){
+        if(UID.getText().isEmpty() && PWD.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Field(s) Empty","ERROR",JOptionPane.ERROR_MESSAGE);
         }
         else{
