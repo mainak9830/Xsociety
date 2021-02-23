@@ -218,36 +218,36 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 51, 51));
         jPanel1.add(jLabel12);
-        jLabel12.setBounds(264, 433, 164, 0);
+        jLabel12.setBounds(360, 390, 164, 40);
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 0, 51));
         jPanel1.add(jLabel13);
-        jLabel13.setBounds(263, 211, 165, 15);
+        jLabel13.setBounds(263, 211, 165, 20);
 
         jLabel14.setBackground(new java.awt.Color(0, 204, 255));
         jLabel14.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 0, 51));
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(722, 354, 161, 0);
+        jLabel14.setBounds(720, 300, 161, 30);
 
         jLabel15.setBackground(new java.awt.Color(0, 204, 255));
         jLabel15.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 51, 51));
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(722, 233, 161, 0);
+        jLabel15.setBounds(722, 213, 161, 20);
 
         jLabel16.setBackground(new java.awt.Color(0, 204, 255));
         jLabel16.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 0, 51));
         jPanel1.add(jLabel16);
-        jLabel16.setBounds(260, 330, 240, 30);
+        jLabel16.setBounds(370, 310, 240, 30);
 
         jLabel17.setBackground(new java.awt.Color(0, 204, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.add(jLabel17);
-        jLabel17.setBounds(722, 157, 161, 0);
+        jLabel17.setBounds(722, 137, 161, 20);
 
         deptCB.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         deptCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CSE", "ECE", "IT", "ME", "EEE", "EE" }));
