@@ -11,10 +11,7 @@ import javax.swing.JOptionPane;
  * @author Kaustav
  */
 public class DisplayManager {
-    private UserManager UM;//object of control class handling Users
-    private NotesManager NM;//object of control class handling Notes/Resources
-    private StoreManager SM;//object of control class handling buying-selling of books/equipments
-    private TransactionManager TM;
+    
     private LoginUI loginScreen;
     private RegisterUI registerScreen;
     private DashboardUI dashboardScreen;
@@ -27,28 +24,28 @@ public class DisplayManager {
     
     private User current_user; //store details of currently logged in User
     
-    DisplayManager(){
-        UM = new UserManager();
-        NM = new NotesManager();
-        SM = new StoreManager();
-        TM = new TransactionManager();
+    public void init(UserManager UM,NotesManager NM,StoreManager SM,TransactionManager TM){
         UM.init();
         NM.init();
         SM.init();
+        this.loginScreen=new LoginUI(this,UM);
+        this.registerScreen=new RegisterUI(this,UM);
+        this.dashboardScreen = new DashboardUI(this);
+        this.searchScreen=new SearchUI(this,NM);
+        this.estoreScreen=new EStoreUI(this,SM,UM,current_user,TM);
+        this.uploadScreen=new uploadUI(this,NM);
+        this.sellbookScreen=new SellBookUI(this,SM);
+        this.selleqpScreen=new SellEquipmentUI(this,SM);
+        this.settingScreen = new SettingsUI(this);
     }
-    /**
-    public void hideAll(){
-        loginScreen.setVisible(false);
-        registerScreen.setVisible(false);
-        dashboardScreen.setVisible(false);
-        searchScreen.setVisible(false);
-        uploadScreen.setVisible(false);
-        estoreScreen.setVisible(false);
-        sellbookScreen.setVisible(false);
-        selleqpScreen.setVisible(false);
-        settingScreen.setVisible(false);
+    public void startApp(){
+        //this.dispLoginUI();        
+        SplashUI splash = new SplashUI();
+        splash.setVisible(true);
+        if(splash.disp()==1){
+            this.dispLoginUI();
+        }
     }
-    */
     public void setUser(User X){//X is currently logged in User extracted from Log In page
         this.current_user = X;
     }
@@ -89,27 +86,5 @@ public class DisplayManager {
         if(input==0){
             System.exit(0);
         }
-    }
-    
-    public static void main(String args[]){
-        DisplayManager startMG = new DisplayManager();
-        startMG.loginScreen=new LoginUI(startMG,startMG.UM);
-        startMG.registerScreen=new RegisterUI(startMG,startMG.UM);
-        startMG.dashboardScreen = new DashboardUI(startMG);
-        startMG.searchScreen=new SearchUI(startMG,startMG.NM);
-        startMG.estoreScreen=new EStoreUI(startMG,startMG.SM,startMG.UM,startMG.current_user,startMG.TM);
-        startMG.uploadScreen=new uploadUI(startMG,startMG.NM);
-        startMG.sellbookScreen=new SellBookUI(startMG,startMG.SM);
-        startMG.selleqpScreen=new SellEquipmentUI(startMG,startMG.SM);
-        startMG.settingScreen = new SettingsUI(startMG);
-        //startMG.dispLoginUI();
-        
-        SplashUI splash = new SplashUI();
-        splash.setVisible(true);
-        if(splash.disp()==1){
-            startMG.dispLoginUI();
-        }
-        
-    }
-    //Testing Account : UID - 8888 , pwd - 88888888
+    }    
 }

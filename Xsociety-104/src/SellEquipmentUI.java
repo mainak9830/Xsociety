@@ -371,11 +371,6 @@ public class SellEquipmentUI extends javax.swing.JFrame {
 
                                     {
                                         String subj[]={"ESC501","CS501","CS502","CS503"};
-                                        //System.out.println(subj[l4.getSelectedIndex()]);
-                                        //System.out.println(l2.getText());
-                                        //System.out.println(set2.getText());
-                                        //System.out.println(linkTXT.getText());
-                                        //System.out.println(HeadMgr.getUser().getUniqueid());
                                         SM.addItem(new Equipment(subj[l4.getSelectedIndex()],l2.getText(),Float.parseFloat(set2.getText()),linkTXT.getText(),Integer.parseInt(HeadMgr.getUser().getUniqueid())));
                                         JOptionPane.showMessageDialog(null,"YOUR ITEM HAS BEEN ADDED");
                                     }

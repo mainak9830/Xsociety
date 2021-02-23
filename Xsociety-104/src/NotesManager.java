@@ -88,6 +88,7 @@ public class NotesManager {
         }
         return temp;    
     }
+    /**
     public static void main(String args[]){
         NotesManager x2 = new NotesManager();
         assert(x2.init() == true);
@@ -98,4 +99,5 @@ public class NotesManager {
         //new uploadUI().setVisible(true);
         
   }
+  * */
 }

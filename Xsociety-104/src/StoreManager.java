@@ -27,8 +27,7 @@ public class StoreManager {
                 String[] sb = line.split(",");
                 booklist.add(new Book(sb[0],sb[1],Float.parseFloat(sb[2]),sb[3],Integer.parseInt(sb[4]))); 
             
-            }            
-            //System.out.println(list.size()); 
+            }
             br.close();
             ux1.close();
         }catch(Exception e){
@@ -47,7 +46,6 @@ public class StoreManager {
             
             }
             
-            //System.out.println(list.size()); 
             br.close();
             ux1.close();
         }catch(Exception e){
@@ -84,7 +82,7 @@ public class StoreManager {
         }
     }
     public ArrayList<String> getList(String st,int ch,User current_user){ //use same function to generate buying list filtered according to subject code
-        System.out.println(st+" "+ch);
+        //System.out.println(st+" "+ch);
         st=st.trim();//delete space after search string
         ArrayList<String> list = new ArrayList<String>();
         if(ch==0){
@@ -158,6 +156,7 @@ public class StoreManager {
         return null;        
         
     }
+    /**
     public static void main(String args[]){
         StoreManager ob = new StoreManager();
         ob.init();
@@ -180,8 +179,7 @@ public class StoreManager {
         Book p = ob.buyBook("1111");
         if(p!=null)
             System.out.println(p.toString());
-        */
-        /**
+        
         Equipment q = ob.buyEquipment("1112");
         if(q!=null){
             System.out.println(q.toString());
@@ -190,4 +188,3 @@ public class StoreManager {
         
         
     }
-}

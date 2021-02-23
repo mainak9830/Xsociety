@@ -416,11 +416,6 @@ public class SellBookUI extends javax.swing.JFrame {
             jLabel6.setVisible(true);
             jLabel6.setText("Seller Details Added to the Database");
             String subjCode[]={ "ESC501", "CS501", "CS502", "CS503" };
-            //System.out.println(subjCode[jComboBox1.getSelectedIndex()]);
-            //System.out.println(jTextField1.getText());
-            //System.out.println(jTextField2.getText());
-            //System.out.println(jTextField3.getText());
-            //System.out.println(HeadMgr.getUser().toString());
             SM.addItem(new Book(subjCode[jComboBox1.getSelectedIndex()],jTextField2.getText(),Float.parseFloat(jTextField1.getText()),jTextField3.getText(),Integer.parseInt(HeadMgr.getUser().getUniqueid())));
         }
         else{

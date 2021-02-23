@@ -76,7 +76,8 @@ public class TransactionManager implements Serializable{
         catch (NoSuchAlgorithmException e) { 
             throw new RuntimeException(e); 
         } 
-    }			
+    }	
+    /**
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		User buy=new User("1290","bybye123","3rd","Computer Science","kmghf@gmail.com","7890267000");
@@ -92,4 +93,5 @@ public class TransactionManager implements Serializable{
                                   //s1.generateReceipt();
                                   //s2.generateReceipt();
 	}
+        * */
 }

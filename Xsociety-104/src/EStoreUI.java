@@ -375,11 +375,8 @@ public class EStoreUI extends javax.swing.JFrame {
             int ch = itemTypecb.getSelectedIndex();
             lst.clear();
             lst = SM.getList(tx, ch,HeadMgr.getUser());
-            System.out.println("SIZE "+lst.size());
             for(String i:lst){
-                System.out.println(i.split(",")[0]);
                 String data[]={i.split(",")[1],i.split(",")[3]};
-                System.out.println(i.split(",")[1]+"  "+i.split(",")[3]);
                 tb1Model.addRow(data);
             }
             if(lst.size()==0){
@@ -403,9 +400,7 @@ public class EStoreUI extends javax.swing.JFrame {
                     ReceiptHash.setText("Transaction successful");
                     String BookD = boughtB.toDetails();
                     String buyerD = HeadMgr.getUser().toDetails();
-                    String sellerD = UM.searchUser((lst.get(sr)).split(",")[4]).toDetails();
-                    //System.out.println(boughtB.toString());
-                    System.out.println("lst size = "+lst.size());                    
+                    String sellerD = UM.searchUser((lst.get(sr)).split(",")[4]).toDetails();             
                     String hash = TM.generateReceipt(buyerD,sellerD,BookD);
                     int opt = JOptionPane.showConfirmDialog(null,"ReceiptHash="+hash,"SUCCESS",JOptionPane.DEFAULT_OPTION);
                     if(opt==0){
@@ -427,7 +422,6 @@ public class EStoreUI extends javax.swing.JFrame {
                         searchX.setText("");
                         jTable1.setModel(new DefaultTableModel(null,new String[]{"Item Name,Price"}));
                     }
-                    System.out.println((lst.get(sr)).split(",")[4]);
                 }
             }
         }

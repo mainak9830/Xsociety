@@ -312,7 +312,6 @@ public class SearchUI extends javax.swing.JFrame {
         //list=nmg.getList(subj);
        ArrayList<Resource> temp_list = new ArrayList<Resource>();
        temp_list = NM.searchNotes(subj);
-       System.out.println(subj);
        if(subj.compareTo("ESC501")==0){
             SWEcb.removeAllItems();
             for(int i = 0;i<temp_list.size();i++){
