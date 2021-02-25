@@ -60,7 +60,11 @@ public class SearchUI extends javax.swing.JFrame {
                    }
             } );
         }
-        
+        subjectComboBox.setBackground(Color.WHITE);
+        SWEcb.setBackground(Color.WHITE);
+        Compilercb.setBackground(Color.WHITE);
+        OScb.setBackground(Color.WHITE);
+        OOPcb.setBackground(Color.WHITE);
         SWEcb.setVisible(false);
         Compilercb.setVisible(false);
         OScb.setVisible(false);
