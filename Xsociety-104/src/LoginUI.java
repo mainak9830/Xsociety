@@ -1,3 +1,4 @@
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 /**
  *
@@ -96,6 +97,11 @@ public class LoginUI extends javax.swing.JFrame {
         jLabel4.setBounds(340, 250, 92, 26);
 
         PWD.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        PWD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PWDKeyPressed(evt);
+            }
+        });
         jPanel2.add(PWD);
         PWD.setBounds(460, 250, 269, 26);
 
@@ -150,6 +156,9 @@ public class LoginUI extends javax.swing.JFrame {
 
     private void loginBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseClicked
         // TODO add your handling code here:
+        login();
+    }//GEN-LAST:event_loginBtnMouseClicked
+    private void login(){
         if(UID.getText().isEmpty() && PWD.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,"Field(s) Empty","ERROR",JOptionPane.ERROR_MESSAGE);
         }
@@ -164,8 +173,7 @@ public class LoginUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Wrong Credentials","ERROR",JOptionPane.ERROR_MESSAGE);
             }
         }
-    }//GEN-LAST:event_loginBtnMouseClicked
-
+    }
     private void jLabelICONMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelICONMouseEntered
         // TODO add your handling code here:
         ProjTitle.setVisible(true);
@@ -177,6 +185,13 @@ public class LoginUI extends javax.swing.JFrame {
         ProjTitle.setVisible(false);
         credits.setVisible(false);
     }//GEN-LAST:event_jLabelICONMouseExited
+
+    private void PWDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PWDKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+            login();
+        }
+    }//GEN-LAST:event_PWDKeyPressed
 
     /**
      * @param args the command line arguments
