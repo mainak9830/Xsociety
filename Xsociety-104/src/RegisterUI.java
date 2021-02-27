@@ -21,6 +21,7 @@ public class RegisterUI extends javax.swing.JFrame {
      */
     private UserManager UserMgr;
     private DisplayManager HeadMgr;
+    private int count=0;
     public RegisterUI(DisplayManager ob,UserManager ob1) {
         HeadMgr = ob;
         UserMgr = ob1;
@@ -212,7 +213,7 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 51, 51));
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(263, 157, 165, 0);
+        jLabel11.setBounds(263, 137, 165, 20);
 
         jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
@@ -241,7 +242,7 @@ public class RegisterUI extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 0, 51));
         jPanel1.add(jLabel16);
-        jLabel16.setBounds(370, 310, 240, 30);
+        jLabel16.setBounds(260, 290, 240, 30);
 
         jLabel17.setBackground(new java.awt.Color(0, 204, 255));
         jLabel17.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
@@ -316,9 +317,12 @@ public class RegisterUI extends javax.swing.JFrame {
         Matcher m=p1.matcher(uid.getText());
         if(!m.matches()){
             jLabel11.setText("Invalid unique id !");
+            count++;
         }
         else{
             jLabel11.setText(null);
+             if(count > 0)
+                count--;
         }   
     }//GEN-LAST:event_uidKeyReleased
 
@@ -327,10 +331,14 @@ public class RegisterUI extends javax.swing.JFrame {
         Pattern p1 = Pattern.compile(patt1);
         Matcher m=p1.matcher(pass.getText());
         if(!m.matches()){
+          
             jLabel13.setText("Minimum 8 characters!");
+            count++;
         }
         else{
             jLabel13.setText(null);
+             if(count > 0)
+                count--;
         }   
     }//GEN-LAST:event_passKeyReleased
 
@@ -340,9 +348,12 @@ public class RegisterUI extends javax.swing.JFrame {
         Matcher m=p1.matcher(cno.getText());
         if(!m.matches()){
             jLabel14.setText("Invalid contact no.!");
+            count++;
         }
         else{
             jLabel14.setText(null);
+            if(count > 0)
+                count--;
         }   
     }//GEN-LAST:event_cnoKeyReleased
 
@@ -352,16 +363,23 @@ public class RegisterUI extends javax.swing.JFrame {
         Matcher m=p1.matcher(emailTX.getText());
         if(!m.matches()){
             jLabel15.setText("Invalid email!");
+            
+            count++;
         }
         else{
             jLabel15.setText(null);
+             if(count > 0)
+                count--;
         }   
     }//GEN-LAST:event_emailTXKeyReleased
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         if((uid.getText().equals(""))||pass.getText().equals("")||cpass.getText().equals("")||emailTX.getText().equals("")||cno.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Field(s) Empty","FAILED",JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_registerBtnActionPerformed
+        }
+        else if(count > 0){
+             JOptionPane.showMessageDialog(null,"Invalid Field(s) Value","FAILED",JOptionPane.ERROR_MESSAGE);
+        }
         else{
             UserMgr.init();
             User chk = UserMgr.searchUser(uid.getText());
@@ -378,7 +396,8 @@ public class RegisterUI extends javax.swing.JFrame {
                 this.dispose();
                 HeadMgr.dispLoginUI();
             }
-        }}
+        }
+    }//GEN-LAST:event_registerBtnActionPerformed
     private void cpassKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cpassKeyReleased
        String password =new String(pass.getText());
        String conpassword = new String(cpass.getText());
