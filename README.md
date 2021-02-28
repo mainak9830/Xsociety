@@ -1,5 +1,9 @@
 # Xsociety
-IEM 3rd year(2018-2022) batch OOP project
+IEM 3rd year(CSE 2018-2022 bacth) Object Oriented Programming project
+
+_Project Summary:_
+An application that helps in sharing notes,books and equipments amongst college students.
+
 
 ## Project Wiki:
 [Wiki page](http://103.127.146.165/wiki/index.php?title=Xsociety:Main)
@@ -34,7 +38,7 @@ java -jar Xsociety-104.jar
 ```
 
 ## Release Notes:
-###Version 0.1
+**Version 0.1**
 _Date of Release: [22nd February,2021]_
 
 Basic Functions of **Study Resource Management** software:
@@ -44,7 +48,7 @@ Basic Functions of **Study Resource Management** software:
 - Sell books/equipments amongst students.
 - Settings [report user and basic feedback]
 
-###Version 0.2
+**Version 0.2**
 _Date of Release: [28th February,2021]_
 
 Points:
