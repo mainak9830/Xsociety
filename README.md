@@ -1,7 +1,7 @@
 # Xsociety
 IEM 3rd year(2018-2022) batch OOP project
 
-## Project Description:
+## Project Wiki:
 [Wiki page](http://103.127.146.165/wiki/index.php?title=Xsociety:Main)
 
 ## Team Members:
@@ -21,3 +21,8 @@ IEM 3rd year(2018-2022) batch OOP project
 - [ ] Product Demo :computer:
 - [ ] Process Audit :notebook:
 - [ ] Project Closure :confetti_ball:
+
+## Requirements:
+Java Runtime Environment
+
+## Release Notes:

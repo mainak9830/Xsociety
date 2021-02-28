@@ -2,6 +2,7 @@
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -58,7 +59,7 @@ public class SellEquipmentUI extends javax.swing.JFrame {
                    }
             } );
         }
-        
+        jLabel3.setVisible(false);
         linkTXT.setVisible(false);
         price.setVisible(false);
         set2.setVisible(false);
@@ -195,6 +196,11 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         l2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         l2.setText("ENTER THE EQUIPMENT");
         l2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        l2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                l2MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         jLabel2.setText("LABCODE");
@@ -216,11 +222,21 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         linkTXT.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         linkTXT.setText("---ENTER LINK---");
         linkTXT.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        linkTXT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                linkTXTMouseClicked(evt);
+            }
+        });
 
         set2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         set2.setText("ENTER THE PRICE");
         set2.setToolTipText("");
         set2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        set2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                set2MouseClicked(evt);
+            }
+        });
 
         confirm.setText("CONFIRM");
         confirm.addActionListener(new java.awt.event.ActionListener() {
@@ -338,17 +354,22 @@ public class SellEquipmentUI extends javax.swing.JFrame {
 	JOptionPane.showMessageDialog(null,"Please enter Equipment name");
         }
         String str = l2.getText();
-        if(Pattern.matches("^[a-zA-Z]+",str)){
+        if(Pattern.matches("^[a-zA-Z0-9_ ]*$",str)){
             linkTXT.setVisible(true);
             price.setVisible(true);
             set2.setVisible(true);
             confirm.setVisible(true);
+            jLabel3.setVisible(true);
         }
     }//GEN-LAST:event_addActionPerformed
 
     private void confirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmActionPerformed
         // TODO add your handling code here:
-        if(set2.getText().length()<=0 || set2.getText().equals("ENTER THE PRICE"))
+        String patt1="https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&//=]*)";
+        Pattern p1 = Pattern.compile(patt1);
+        Matcher m=p1.matcher(linkTXT.getText());
+        //if(!m.matches())
+        if(set2.getText().length()<=0 || set2.getText().compareTo("ENTER THE PRICE")==0 || set2.getText().equals(""))
                             {
                                     JOptionPane.showMessageDialog(null,"Please enter a price");
 
@@ -366,7 +387,10 @@ public class SellEquipmentUI extends javax.swing.JFrame {
 
                             else
                             {
-                                    if(Pattern.matches("^[a-zA-Z]+",l2.getText())&&set2.getText().length()<=3&&
+                                if(!m.matches()){
+                                    JOptionPane.showMessageDialog(null,"URL invalid.\nOnly Google drive links allowed.","FAILED",JOptionPane.ERROR_MESSAGE);
+                                }
+                                else if(Pattern.matches("^[a-zA-Z0-9_ ]*$",l2.getText())&&set2.getText().length()<=3&&
                                                     (!Pattern.matches(".*\\D.*",set2.getText())))
 
                                     {
@@ -393,6 +417,27 @@ public class SellEquipmentUI extends javax.swing.JFrame {
         this.dispose();
         HeadMgr.dispSettingsUI();
     }//GEN-LAST:event_HomeB8MouseClicked
+
+    private void l2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_l2MouseClicked
+        // TODO add your handling code here:
+        if(l2.getText().compareTo("ENTER THE EQUIPMENT")==0){
+            l2.setText("");
+        }
+    }//GEN-LAST:event_l2MouseClicked
+
+    private void linkTXTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkTXTMouseClicked
+        // TODO add your handling code here:
+        if(linkTXT.getText().compareTo("---ENTER LINK---")==0){
+            linkTXT.setText("");
+        }
+    }//GEN-LAST:event_linkTXTMouseClicked
+
+    private void set2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_set2MouseClicked
+        // TODO add your handling code here:
+        if(set2.getText().compareTo("ENTER THE PRICE")==0){
+            set2.setText("");
+        }
+    }//GEN-LAST:event_set2MouseClicked
 
     /**
      * @param args the command line arguments

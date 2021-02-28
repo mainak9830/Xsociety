@@ -122,7 +122,7 @@ public class SplashUI extends javax.swing.JFrame {
             if(i==20)
                 msgLabel.setText("Loading assets...");
             if(i==50)
-                msgLabel.setText("Checking file systems...");
+                msgLabel.setText("Checking file system...");
             if(i==80)
                 msgLabel.setText("And here we go...");
             if(i>=20 && i<=80){

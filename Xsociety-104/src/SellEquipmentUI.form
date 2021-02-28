@@ -310,6 +310,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="l2MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
@@ -365,6 +368,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="linkTXTMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="set2">
           <Properties>
@@ -377,6 +383,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="set2MouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="confirm">
           <Properties>
