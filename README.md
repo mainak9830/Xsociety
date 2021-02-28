@@ -16,7 +16,7 @@ IEM 3rd year(2018-2022) batch OOP project
 - [x] Integration of all use cases :nut_and_bolt:
 - [x] System Testing :wrench:
 - [x] Release 0.1 :checkered_flag:
-- [ ] Bug Fixes :beetle:
+- [x] Bug Fixes :beetle:
 - [ ] Release 1.0 :checkered_flag:
 - [ ] Product Demo :computer:
 - [ ] Process Audit :notebook:
@@ -25,4 +25,32 @@ IEM 3rd year(2018-2022) batch OOP project
 ## Requirements:
 Java Runtime Environment
 
+## Execute Software:
+1. Double click jar/exe to run application.
+OR
+2. Open terminal/command prompt in directory/folder in which **jar** file is and type:
+```
+java -jar Xsociety-104.jar
+```
+
 ## Release Notes:
+######Version 0.1
+_Date of Release: [22nd February,2021]_
+
+Basic Functions of **Study Resource Management** software:
+- Search books/notes according to subject and download from browser link
+- Upload books/notes links
+- Buy books/equipments (at a lower price than original) and get a receipt to be printed for transaction.
+- Sell books/equipments amongst students.
+- Settings [report user and basic feedback]
+
+######Version 0.2
+_Date of Release: [28th February,2021]_
+
+Points:
+- Fixed bugs from v0.1
+- Improved User experience by upgrading few UI elements
+- Sample Data Files available for ease of use
+
+_Note:_
+[Keep the jar/exe file in same folder as sample files to access them.]
