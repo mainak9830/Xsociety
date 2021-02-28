@@ -34,7 +34,7 @@ java -jar Xsociety-104.jar
 ```
 
 ## Release Notes:
-######Version 0.1
+###Version 0.1
 _Date of Release: [22nd February,2021]_
 
 Basic Functions of **Study Resource Management** software:
@@ -44,7 +44,7 @@ Basic Functions of **Study Resource Management** software:
 - Sell books/equipments amongst students.
 - Settings [report user and basic feedback]
 
-######Version 0.2
+###Version 0.2
 _Date of Release: [28th February,2021]_
 
 Points:
