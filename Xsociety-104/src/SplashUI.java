@@ -65,9 +65,10 @@ public class SplashUI extends javax.swing.JFrame {
         jLabel6.setBounds(310, 230, 220, 40);
 
         jLabel7.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("- A place for Students by Students");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(290, 340, 220, 20);
+        jLabel7.setBounds(240, 340, 280, 20);
 
         jLabel2.setFont(new java.awt.Font("Lucida Sans Typewriter", 0, 13)); // NOI18N
         jLabel2.setText("KaustavSaha10/Xsociety");
@@ -122,7 +123,7 @@ public class SplashUI extends javax.swing.JFrame {
             if(i==20)
                 msgLabel.setText("Loading assets...");
             if(i==50)
-                msgLabel.setText("Checking file system...");
+                msgLabel.setText("Checking file system...");            
             if(i==80)
                 msgLabel.setText("And here we go...");
             if(i>=20 && i<=80){

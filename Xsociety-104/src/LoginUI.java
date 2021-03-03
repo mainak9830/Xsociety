@@ -1,4 +1,5 @@
 import java.awt.event.KeyEvent;
+import java.net.URI;
 import javax.swing.JOptionPane;
 /**
  *
@@ -41,6 +42,8 @@ public class LoginUI extends javax.swing.JFrame {
         jLabelBG = new javax.swing.JLabel();
         ProjTitle = new javax.swing.JLabel();
         credits = new javax.swing.JLabel();
+        infoBtn = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +137,29 @@ public class LoginUI extends javax.swing.JFrame {
         jPanel2.add(credits);
         credits.setBounds(320, 40, 240, 16);
 
+        infoBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/info.png"))); // NOI18N
+        infoBtn.setBorder(null);
+        infoBtn.setMaximumSize(new java.awt.Dimension(24, 24));
+        infoBtn.setMinimumSize(new java.awt.Dimension(24, 24));
+        infoBtn.setPreferredSize(new java.awt.Dimension(24, 24));
+        infoBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                infoBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                infoBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                infoBtnMouseExited(evt);
+            }
+        });
+        jPanel2.add(infoBtn);
+        infoBtn.setBounds(250, 490, 30, 30);
+
+        jLabel5.setFont(new java.awt.Font("Lucida Sans Unicode", 0, 14)); // NOI18N
+        jPanel2.add(jLabel5);
+        jLabel5.setBounds(290, 490, 510, 30);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,6 +219,26 @@ public class LoginUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PWDKeyPressed
 
+    private void infoBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBtnMouseEntered
+        // TODO add your handling code here:
+        jLabel5.setText("For more information or error resolution,visit our Github repo(click).");
+    }//GEN-LAST:event_infoBtnMouseEntered
+
+    private void infoBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBtnMouseExited
+        // TODO add your handling code here:
+        jLabel5.setText("");
+    }//GEN-LAST:event_infoBtnMouseExited
+
+    private void infoBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoBtnMouseClicked
+        // TODO add your handling code here:
+        try{
+        URI uri= new URI("https://github.com/KaustavSaha10/Xsociety");
+        java.awt.Desktop.getDesktop().browse(uri);
+        }catch(Exception e){
+            System.err.print(e.getMessage());
+        }
+    }//GEN-LAST:event_infoBtnMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -234,10 +280,12 @@ public class LoginUI extends javax.swing.JFrame {
     private javax.swing.JLabel ProjTitle;
     private javax.swing.JTextField UID;
     private javax.swing.JLabel credits;
+    private javax.swing.JButton infoBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelBG;
     private javax.swing.JLabel jLabelICON;
     private javax.swing.JPanel jPanel2;
