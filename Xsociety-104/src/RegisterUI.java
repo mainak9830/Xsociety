@@ -21,7 +21,7 @@ public class RegisterUI extends javax.swing.JFrame {
      */
     private UserManager UserMgr;
     private DisplayManager HeadMgr;
-    private int count=0;
+    private boolean count[]={true,true,true,true};//0-uid 1-password 2-email 3-contact no.
     public RegisterUI(DisplayManager ob,UserManager ob1) {
         HeadMgr = ob;
         UserMgr = ob1;
@@ -317,12 +317,12 @@ public class RegisterUI extends javax.swing.JFrame {
         Matcher m=p1.matcher(uid.getText());
         if(!m.matches()){
             jLabel11.setText("Invalid unique id !");
-            count++;
+            count[0]=false;
         }
         else{
             jLabel11.setText(null);
-             if(count > 0)
-                count--;
+             if(count[0] == false)
+                count[0]=true;
         }   
     }//GEN-LAST:event_uidKeyReleased
 
@@ -333,12 +333,12 @@ public class RegisterUI extends javax.swing.JFrame {
         if(!m.matches()){
           
             jLabel13.setText("Minimum 8 characters!");
-            count++;
+            count[1]=false;
         }
         else{
             jLabel13.setText(null);
-             if(count > 0)
-                count--;
+             if(count[1]==false)
+                count[1]=true;
         }   
     }//GEN-LAST:event_passKeyReleased
 
@@ -348,28 +348,27 @@ public class RegisterUI extends javax.swing.JFrame {
         Matcher m=p1.matcher(cno.getText());
         if(!m.matches()){
             jLabel14.setText("Invalid contact no.!");
-            count++;
+            count[2]=false;
         }
         else{
             jLabel14.setText(null);
-            if(count > 0)
-                count--;
+            if(count[2]==false)
+                count[2]=true;
         }   
     }//GEN-LAST:event_cnoKeyReleased
 
     private void emailTXKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTXKeyReleased
-        String patt1="^[A-Za-z0-9]+[@]{1}+[a-z0-9]+[.]{1}+[a-z]+$";
+        String patt1="^[A-Za-z0-9.]+[@]{1}+[a-z0-9]+[.]{1}+[a-z]+$";
         Pattern p1 = Pattern.compile(patt1);
         Matcher m=p1.matcher(emailTX.getText());
         if(!m.matches()){
-            jLabel15.setText("Invalid email!");
-            
-            count++;
+            jLabel15.setText("Invalid email!");            
+            count[3]=false;
         }
         else{
             jLabel15.setText(null);
-             if(count > 0)
-                count--;
+             if(count[3]==false)
+                count[3]=true;
         }   
     }//GEN-LAST:event_emailTXKeyReleased
 
@@ -377,7 +376,7 @@ public class RegisterUI extends javax.swing.JFrame {
         if((uid.getText().equals(""))||pass.getText().equals("")||cpass.getText().equals("")||emailTX.getText().equals("")||cno.getText().equals("")){
             JOptionPane.showMessageDialog(null,"Field(s) Empty","FAILED",JOptionPane.ERROR_MESSAGE);
         }
-        else if(count > 0){
+        else if(count[0]==false || count[1]==false || count[2]==false || count[3]==false){
              JOptionPane.showMessageDialog(null,"Invalid Field(s) Value","FAILED",JOptionPane.ERROR_MESSAGE);
         }
         else{
