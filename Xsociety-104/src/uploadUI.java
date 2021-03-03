@@ -32,7 +32,7 @@ public class uploadUI extends javax.swing.JFrame {
      */
     DisplayManager HeadMgr;
     NotesManager NM;
-    private int count=0;
+    private boolean count[]={true,true,true};//0-name 1-faculty 2-link
     public uploadUI(DisplayManager ob,NotesManager ob1) {
         HeadMgr = ob;
         NM = ob1;
@@ -461,7 +461,7 @@ public class uploadUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Field(s) Empty","FAILED",JOptionPane.ERROR_MESSAGE);
         }
         else if(pathTF.getText().equals("")){
-            JOptionPane.showMessageDialog(null,"Please choose file to upload","FAILED",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Please enter link","FAILED",JOptionPane.ERROR_MESSAGE);
         }
         else if(b){
             JOptionPane.showMessageDialog(null,"No Special characters allowed","FAILED",JOptionPane.ERROR_MESSAGE);
@@ -469,7 +469,7 @@ public class uploadUI extends javax.swing.JFrame {
         else if(!b1){
             JOptionPane.showMessageDialog(null,"Give proper url","FAILED",JOptionPane.ERROR_MESSAGE);
         }
-        else if(count>0){
+        else if(count[0]==false || count[1]==false || count[2]==false){
             JOptionPane.showMessageDialog(null,"Field(s) Value(s) Invalid","FAILED",JOptionPane.ERROR_MESSAGE);
         }
         else{
@@ -477,11 +477,12 @@ public class uploadUI extends javax.swing.JFrame {
             Resource ob = new Resource(sbx,nameTF.getText(),authorTF.getText(),pathTF.getText());
             //ob.display();
             NM.init();
-            if(NM.uploadNotes(ob))
+            if(NM.uploadNotes(ob)){
                 JOptionPane.showMessageDialog(null,"UPLOAD SUCCESSFUL","Status",JOptionPane.INFORMATION_MESSAGE);
-            this.setVisible(false);
-            this.dispose();
-            HeadMgr.dispUploadUI();
+                nameTF.setText("");
+                authorTF.setText("");
+                pathTF.setText("");
+            }
         }
     }//GEN-LAST:event_uploadBActionPerformed
 
@@ -508,12 +509,12 @@ public class uploadUI extends javax.swing.JFrame {
         Matcher m=p.matcher(nameTF.getText());
         if(!m.matches()){
             jLabel5.setText("Invalid name!");
-            count++;
+            count[0]=false;
         }
         else{
             jLabel5.setText(null);
-            if(count > 0)
-                count--;
+            if(count[0]==false)
+                count[0]=true;
         }
     }//GEN-LAST:event_nameTFKeyReleased
 
@@ -524,12 +525,12 @@ public class uploadUI extends javax.swing.JFrame {
         Matcher m=p1.matcher(authorTF.getText());
         if(!m.matches()){
             jLabel6.setText("Invalid author name!");
-            count++;
+            count[1]=false;
         }
         else{
             jLabel6.setText(null);
-              if(count > 0)
-                count--;
+              if(count[1]==false)
+                count[1]=true;
         } 
     }//GEN-LAST:event_authorTFKeyReleased
 
@@ -549,11 +550,11 @@ public class uploadUI extends javax.swing.JFrame {
         Pattern p1 = Pattern.compile(patt1);
         Matcher m=p1.matcher(pathTF.getText());
         if(!m.matches()){
-            count++;
+            count[2]=false;
         }
         else{
-            if(count > 0)
-                count--;
+            if(count[2]==false)
+                count[2]=true;
         }
     }//GEN-LAST:event_pathTFKeyReleased
 
