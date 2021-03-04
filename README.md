@@ -34,7 +34,7 @@ Java Runtime Environment
 OR
 2. Open terminal/command prompt in directory/folder in which **jar** file is and type:
 ```
-java -jar Xsociety_v0.2.jar
+java -jar Xsociety_v1.0.jar
 ```
 
 ## Release Notes:
