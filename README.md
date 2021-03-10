@@ -21,10 +21,10 @@ An application that helps in sharing notes,books and equipments amongst college 
 - [x] System Testing :wrench:
 - [x] Release 0.1 :checkered_flag:
 - [x] Bug Fixes :beetle:
-- [ ] Release 1.0 :checkered_flag:
-- [ ] Product Demo :computer:
-- [ ] Process Audit :notebook:
-- [ ] Project Closure :confetti_ball:
+- [x] Release 1.0 :checkered_flag:
+- [x] Product Demo :computer:
+- [x] Process Audit :notebook:
+- [x] Project Closure :confetti_ball:
 
 ## Requirements:
 Java Runtime Environment
