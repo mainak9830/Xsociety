@@ -2,7 +2,7 @@
 IEM 3rd year(CSE 2018-2022 bacth) Object Oriented Programming project
 
 _Project Summary:_
-An application that helps in sharing notes,books and equipments amongst college students.
+An application that helps in sharing notes,books and equipment amongst college students.
 
 
 ## Project Wiki:
