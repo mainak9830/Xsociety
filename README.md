@@ -5,9 +5,6 @@ _Project Summary:_
 An application that helps in sharing notes,books and equipment amongst college students.
 
 
-## Project Wiki:
-[Wiki page](http://103.127.146.165/wiki/index.php?title=Xsociety:Main)
-
 ## Team Members:
 - Kaustav Saha [Project Manager]
 - Mainak Adak [Developer 1][QA Engineer]
