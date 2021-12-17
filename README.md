@@ -38,7 +38,7 @@ java -jar Xsociety_v1.0.jar
 **Version 0.1**
 _Date of Release: [22nd February,2021]_
 
-Basic Functions of **Study Resource Management** software:
+Basic Functions of **Student Resource Management** software:
 - Search books/notes according to subject and download from browser link
 - Upload books/notes links
 - Buy books/equipments (at a lower price than original) and get a receipt to be printed for transaction.
